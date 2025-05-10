@@ -16,21 +16,21 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   const name2 = conn.getName(m.sender)
 
   if (user.registered) {
-    return m.reply(`『✦』Ya estás registrado.\n\n¿Quieres volver a registrarte?\nUsa *${usedPrefix}unreg* para borrar tu registro.`)
+    return m.reply(`✦.── Ya estás Registrado ──.✦\n\n¿Deseas volver a registrarte?\nUtiliza *${usedPrefix}unreg* para borrar tu registro.`)
   }
 
   if (!Reg.test(text)) {
-    return m.reply(`『✦』Formato incorrecto.\n\nUso: *${usedPrefix + command} nombre.edad*\nEjemplo: *${usedPrefix + command} ${name2}.18*`)
+    return m.reply(`✦.── Formato Incorrecto ──.✦\n\nUso correcto:\n*${usedPrefix + command} nombre.edad*\nEjemplo:\n*${usedPrefix + command} ${name2}.18*`)
   }
 
   let [_, name, __, age] = text.match(Reg)
-  if (!name) return m.reply('『✦』El nombre no puede estar vacío.')
-  if (!age) return m.reply('『✦』La edad no puede estar vacía.')
-  if (name.length >= 100) return m.reply('『✦』El nombre es demasiado largo.')
+  if (!name) return m.reply('✦.── Error ──.✦\n\n𔖲𔖮𔖭 El nombre no puede estar vacío.')
+  if (!age) return m.reply('✦.── Error ──.✦\n\n𔖲𔖮𔖭 La edad no puede estar vacía.')
+  if (name.length >= 100) return m.reply('✦.── Nombre muy largo ──.✦\n\n𔖲𔖮𔖭 El nombre no debe tener más de 100 caracteres.')
 
   age = parseInt(age)
-  if (age > 1000) return m.reply('『✦』Wow, el abuelo quiere jugar con el bot.')
-  if (age < 5) return m.reply('『✦』Hay un abuelo bebé jasjajajs')
+  if (age > 1000) return m.reply('✦.── Edad demasiado alta ──.✦\n\n𔖲𔖮𔖭 Wow, el abuelo quiere jugar con el bot.')
+  if (age < 5) return m.reply('✦.── Edad muy baja ──.✦\n\n𔖲𔖮𔖭 ¿Un bebé programando bots?')
 
   // Registro
   user.name = `${name}✓`.trim()
@@ -45,23 +45,19 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   const sn = createHash('md5').update(m.sender).digest('hex').slice(0, 20)
 
   const regbot = `
-╭───❍ *Registro 🌸* ❍───╮
-│ ✦ 𝙐𝙨𝙪𝙖𝙧𝙞𝙤 𝙑𝙖𝙡𝙞𝙙𝙖𝙙𝙤 ✦
-│
-│ ᰔᩚ *Nombre:* ${name}
-│ ✎ *Edad:* ${age} años
-│ 🆔 *ID:* ${sn}
-│
-├─ 🎁 *Recompensas Recibidas:*
-│ ⛁ *Monedas:* +46
-│ ✰ *Experiencia:* +310
-│ ❖ *Tokens:* +25
-│
-├─ 📢 *Verifica Tu Registro Aqui:*
-│ https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd
-│
-╰────────•••────────╯
-> @Wirk
+✦.──  Registro Completado ──.✦
+
+𔖲𔖮𔖭 *Nombre* : ${name}
+𔖲𔖮𔖭 *Edad* : ${age} años
+𔖲𔖮𔖭 *ID* : ${sn}
+
+⭑ ⭒ Recompensas Iniciales ⭒ ⭑
+𓆩 ⛁ Monedas : +46
+𓆩 ✰ Experiencia : +310
+𓆩 ❖ Tokens : +25
+
+✧ *Verifica tu registro aca*! ✧
+➤ https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd
 `.trim()
 
   await m.react('📩')
@@ -71,7 +67,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
     contextInfo: {
       externalAdReply: {
         title: '✧ Registro Completado ✧',
-        body: 'https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd',
+        body: 'Únete a la comunidad de Mai',
         thumbnailUrl: pp,
         sourceUrl: 'https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd',
         mediaType: 1,
@@ -81,21 +77,22 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
     }
   }, { quoted: m })
 
-  // Enviar notificación al grupo desde el bot principal
+  // Enviar notificación al grupo oficial
   const grupoNotificacion = '120363399440277900@g.us'
   const mensajeNotificacion = `
-╭───❍ *Nuevo Registro* ❍───╮
-│ ᰔᩚ *Nombre:* ${name}
-│ ✎ *Edad:* ${age} años
-│ 🆔 *ID:* ${sn}
-│
-├─ 🎁 *Recompensas:*
-│ ⛁ Monedas: +46
-│ ✰ Experiencia: +310
-│ ❖ Tokens: +25
-│
-📅 *Fecha:* ${moment().format('YYYY-MM-DD HH:mm:ss')}
-╰──────────•••─────────╯`
+✦.──  Nuevo Registro ──.✦
+
+𔖲𔖮𔖭 *Nombre* : ${name}
+𔖲𔖮𔖭 *Edad* : ${age}
+𔖲𔖮𔖭 *ID* : ${sn}
+
+⭑ ⭒ Recompensas Otorgadas ⭒ ⭑
+𓆩 ⛁ +46 monedas
+𓆩 ✰ +310 experiencia
+𓆩 ❖ +25 tokens
+
+🕒 ${moment().format('YYYY-MM-DD HH:mm:ss')}
+`.trim()
 
   try {
     if (global.conn?.sendMessage) {
@@ -106,7 +103,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
       })
     }
   } catch (e) {
-    console.error('Error al enviar notificación al grupo desde el bot principal:', e)
+    console.error('Error al enviar notificación al grupo:', e)
   }
 }
 
