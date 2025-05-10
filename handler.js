@@ -560,23 +560,14 @@ let verifyaleatorio = ['registrar', 'reg', 'verificar', 'verify', 'register'].ge
 
 const msg = {
 rowner: `꒰ ✨ ᴄʀᴇᴀᴛᴏʀ ❗ ꒱\n\n≡ 🌸 \`Comando\` : » *${comando}* solo para los creadores del bot.`,
-
 owner: `꒰ 🍀 ᴅᴇᴠ ❗ ꒱\n\n≡ 🍃 \`Comando\` : » *${comando}* solo para los desarrolladores del bot.`,
-
 mods: `꒰ 🌸 ᴍᴏᴅ ❗ ꒱\n\n≡ 🍄 \`Comando\` : » *${comando}* solo para moderadores del bot.`,
-
 premium: `꒰ 🌷 ᴘʀᴇᴍɪᴜᴍ ❗ ꒱\n\n≡ 🌸 \`Comando\` : » *${comando}* solo para usuarios premium.`,
-
 group: `꒰ 🐾 ɢʀᴜᴘᴏ ❗ ꒱\n\n≡ 🌷 \`Comando\` : » *${comando}* solo en grupos.`,
-
 private: `꒰ 🍡 ᴄʜᴀᴛ ᴘʀɪᴠᴀᴅᴏ ❗ ꒱\n\n≡ 🌸 \`Comando\` : » *${comando}* solo en el chat privado del bot.`,
-
 admin: `꒰ 🌼 ᴀᴅᴍɪɴ ❗ ꒱\n\n≡ 🌻 \`Comando\` : » *${comando}* solo para administradores del grupo.`,
-
 botAdmin: `꒰ 🌱 ʙᴏᴛ ᴀᴅᴍɪɴ ❗ ꒱\n\n≡ 🧸 \`Comando\` : » Necesito ser administrador para ejecutar *${comando}*.`,
-
 unreg: `꒰ 🍥 ᴜɴʀᴇɢ ❗ ꒱\n\n≡ 🌸 \`Comando\` : » *${comando}* solo para usuarios registrados. Regístrate usando:\n> » #${verifyaleatorio} ${user2}.${edadaleatoria}`,
-
 restrict: `꒰ 🌱 ᴄᴀʀᴀᴄᴛᴇʀɪsᴛɪᴄᴀ ᴅᴇsᴀᴄᴛɪᴠᴀ ❗ ꒱\n\n≡ 🌿 \`Comando\` : » Esta característica está desactivada.`
 }[type];
 if (msg) return m.reply(msg).then(_ => m.react('✖️'))}
