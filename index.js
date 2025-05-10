@@ -41,15 +41,15 @@ const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
 //let require = createRequire(megu)
 let { say } = cfonts
 
-console.log(chalk.bold.redBright(`\n✰ Iniciando Yuki-Suou-Bot ✰\n`))
+console.log(chalk.bold.redBright(`\n❤️ Iniciando a Mai 👻\n`))
 
-say('YukiBot-MD', {
+say('MaiBot 🌻', {
 font: 'block',
 align: 'center',
 colors: ['magentaBright']
 })
 
-say(`Developed By • The-King-Destroy`, {
+say(`By • Wirk 👻`, {
 font: 'console',
 align: 'center',
 colors: ['blueBright']
@@ -125,7 +125,7 @@ opcion = '1'
 }
 if (!methodCodeQR && !methodCode && !fs.existsSync(`./${sessions}/creds.json`)) {
 do {
-opcion = await question(colores('⌨ Seleccione una opción:\n') + opcionQR('1. Con código QR\n') + opcionTexto('2. Con código de texto de 8 dígitos\n--> '))
+opcion = await question(colores('🌺 Seleccione una opción:\n') + opcionQR('💛 1. Con código QR\n') + opcionTexto('❤️ 2. Con código de texto de 8 dígitos\n--> '))
 
 if (!/^[1-2]$/.test(opcion)) {
 console.log(chalk.bold.redBright(`✦ No se permiten numeros que no sean 1 o 2, tampoco letras o símbolos especiales.`))
@@ -212,7 +212,7 @@ if (opcion == '1' || methodCodeQR) {
 console.log(chalk.bold.yellow(`\n❐ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))}
 }
 if (connection == 'open') {
-console.log(chalk.bold.green('\n❀ YukiBot-MD Conectada con éxito ❀'))
+console.log(chalk.bold.green('\n🌸 Tu botsita Mai ha sido Conectada con éxito 🌹'))
 }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
@@ -292,9 +292,9 @@ global.rutaJadiBot = join(__dirname, './JadiBots')
 if (global.yukiJadibts) {
 if (!existsSync(global.rutaJadiBot)) {
 mkdirSync(global.rutaJadiBot, { recursive: true }) 
-console.log(chalk.bold.cyan(`La carpeta: ${jadi} se creó correctamente.`))
+console.log(chalk.bold.cyan(`La carpeta: ${jadi} se creó correctamente :D`))
 } else {
-console.log(chalk.bold.cyan(`La carpeta: ${jadi} ya está creada.`)) 
+console.log(chalk.bold.cyan(`La carpeta: ${jadi} ya está creada :>`)) 
 }
 
 const readRutaJadiBot = readdirSync(rutaJadiBot)
@@ -329,7 +329,7 @@ global.reload = async (_ev, filename) => {
 if (pluginFilter(filename)) {
 const dir = global.__filename(join(pluginFolder, filename), true);
 if (filename in global.plugins) {
-if (existsSync(dir)) conn.logger.info(` updated plugin - '${filename}'`)
+if (existsSync(dir)) conn.logger.info(` plugin actualizado - '${filename}'`)
 else {
 conn.logger.warn(`deleted plugin - '${filename}'`)
 return delete global.plugins[filename]
