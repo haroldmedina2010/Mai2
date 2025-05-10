@@ -1,43 +1,49 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
-  if (!text) return m.reply(`🌟 Ingresa un nombre para buscar en YouTube.\n\n✨ *Ejemplo:* ${usedPrefix + command} Shakira`);
+  if (!text) return m.reply(`✨ Ingresa un nombre para buscar en YouTube.\n\nEjemplo: *${usedPrefix + command} Shakira - Acróstico*`);
 
   try {
-    await m.react("🕛"); // React to show processing started
+    await m.react("🔍"); // Reacción inicial
 
-    // --- PRIMER PASO: BUSCAR VIDEO ---
+    // Paso 1: Buscar el video
     const searchApi = `https://delirius-apiofc.vercel.app/search/ytsearch?q=${encodeURIComponent(text)}`;
     const searchResponse = await fetch(searchApi);
     const searchData = await searchResponse.json();
 
     if (!searchData?.data || searchData.data.length === 0) {
       await m.react("❌");
-      return m.reply(`⚠️ No encontré resultados de video en YouTube para *"${text}"*...`);
+      return m.reply(`❌ No encontré resultados en YouTube para: *"${text}"*`);
     }
 
     const video = searchData.data[0]; // Primer resultado
 
-    // Nuevo waitMessage estilizado
-    const waitMessage = `*┏━━━━━━༺❀༻━━━━━━┓*
-*┃* ✨ *Nombre:* ${video.title}
-*┃* 🧚‍♀️ *Artista:* ${video.author.name}
-*┃* ⌛ *Duración:* ${video.duration}
-*┃* 👁 *Vistas:* ${video.views}
-*┗━━━━━━༺❀༻━━━━━━┛*
+    // Mensaje decorado
+    const infoMessage = `
+✦.──『 *YouTube Play* 』──.✦
 
-> ☁️ *Estamos preparando tu audio, espera tantito...*`;
+𔖲𔖮𔖭 *Nombre:* ${video.title}
+𔖲𔖮𔖭 *Autor:* ${video.author.name}
+𔖲𔖮𔖭 *Duración:* ${video.duration}
+𔖲𔖮𔖭 *Vistas:* ${video.views}
+𔖲𔖮𔖭 *Publicado:* ${video.publishedTime || 'Desconocido'}
+𔖲𔖮𔖭 *Url:* ${video.url || `https://www.youtube.com/watch?v=${video.videoId}`}
 
-    // Enviamos miniatura con mensaje
-    const message = await conn.sendMessage(m.chat, {
+☁️ *Espera un momento mientras preparo tu audio...*
+
+☕ *Made By Wirk*
+`.trim();
+
+    // Enviar miniatura con el mensaje decorado
+    await conn.sendMessage(m.chat, {
       image: { url: video.image },
-      caption: waitMessage.trim(),
+      caption: infoMessage,
       contextInfo: {
         forwardingScore: 999,
         isForwarded: true,
         externalAdReply: {
           title: "☕︎︎ 𝘔𝘢𝘪 • 𝑊𝑜𝑟𝑙𝑑 𝑂𝑓 𝐶𝑢𝑡𝑒 🍁",
-          body: "✐ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄 🌵",
+          body: "✐ Dev 𝖡𝗒 𝖶𝗂𝗋𝗄 🌺",
           thumbnailUrl: video.image,
           mediaUrl: "https://chat.whatsapp.com/KqkJwla1aq1LgaPiuFFtEY",
           mediaType: 2,
@@ -47,7 +53,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       }
     }, { quoted: m });
 
-    // --- SEGUNDO PASO: DESCARGAR AUDIO ---
+    // Paso 2: Descargar el audio
     const downloadApi = `https://api.vreden.my.id/api/ytplaymp3?query=${encodeURIComponent(video.title)}`;
     const downloadResponse = await fetch(downloadApi);
     const downloadData = await downloadResponse.json();
@@ -55,9 +61,9 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     if (!downloadData?.result?.download?.url) {
       await m.react("❌");
       if (downloadData?.result?.msg) {
-        return m.reply(`❌ No se pudo obtener el audio del video usando el título. Error de la API: ${downloadData.result.msg}`);
+        return m.reply(`⚠️ No se pudo obtener el audio:\n${downloadData.result.msg}`);
       }
-      return m.reply("❌ No se pudo obtener el audio del video.");
+      return m.reply("⚠️ No se pudo obtener el audio del video.");
     }
 
     const audioUrl = downloadData.result.download.url;
@@ -68,7 +74,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       ptt: false,
       fileName: `🎵 ${video.title}.mp3`,
       contextInfo: {
-        forwardingScore: 9,
+        forwardingScore: 999,
         isForwarded: true
       }
     }, { quoted: m });
@@ -77,11 +83,12 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 
   } catch (error) {
     console.error(error);
-    m.reply(`❌ Ocurrió un error al procesar tu solicitud:\n${error.message}`);
     await m.react("❌");
+    return m.reply(`❌ Error al procesar tu solicitud:\n${error.message}`);
   }
 };
 
+// Menú con botones para elegir entre audio o video
 handler.command = ['play', 'playaudio', 'mp3'];
 handler.help = ['play <texto>', 'playaudio <texto>'];
 handler.tags = ['media'];
