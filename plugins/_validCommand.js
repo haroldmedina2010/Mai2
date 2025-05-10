@@ -38,7 +38,7 @@ export async function before(m) {
     const comando = m.text.trim().split(' ')[0];
     await m.reply(`꒰ ❝ ɴᴏ ᴇxɪꜱᴛᴇ ❞ ꒱
 
-≡ 🌸 \`Comando\` : » *.ju*
+≡ 🌸 \`Comando\` : » *${comando}*
 ≡ 🧁 \`Sugerencia\` : » Usa *#help* para ver todos los comandos disponibles
 > *˚₊‧꒰૮₍｡•́︿•̀｡₎ა꒱ ✧*`);
   }
