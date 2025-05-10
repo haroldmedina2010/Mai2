@@ -36,9 +36,9 @@ export async function before(m) {
     user.commands += 1;
   } else {
     const comando = m.text.trim().split(' ')[0];
-    await m.reply(`꒰͜͡ ✿ ⌜ ₊˚ˑ ⊹ ❝ ᴄᴏᴍᴀɴᴅᴏ ɴᴏ ᴇɴᴄᴏɴᴛʀᴀᴅᴏ ❞ ⊹ ˑ˚₊ ⌟ ✿ ꒱
+    await m.reply(`꒰ ❝ ɴᴏ ᴇxɪꜱᴛᴇ ❞ ꒱
 
-≡ 🌸 \`Comando\` : » *${comando}*
+≡ 🌸 \`Comando\` : » *.ju*
 ≡ 🧁 \`Sugerencia\` : » Usa *#help* para ver todos los comandos disponibles
 > *˚₊‧꒰૮₍｡•́︿•̀｡₎ა꒱ ✧*`);
   }
