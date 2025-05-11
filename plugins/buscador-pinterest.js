@@ -19,15 +19,23 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const imageUrl = randomImage.images_url;
     const title = randomImage.grid_title || `Imagen relacionada a "${text}"`;
 
+    // Preparar la imagen con los botones
+    const buttons = [
+      {
+        buttonId: `${usedPrefix + command} ${text}`,  // Repite la búsqueda
+        buttonText: { displayText: '🔄 Siguiente' },  // Texto del botón
+        type: 1  // Tipo de botón
+      }
+    ];
+
     await m.react('📷');
 
-    // Enviar imagen como plantilla con botón
+    // Enviar imagen con Template Button
     await conn.sendMessage(m.chat, {
       image: { url: imageUrl },
       caption: `✨ *${title}*`,
-      templateButtons: [
-        { index: 1, quickReplyButton: { displayText: '🔄 Otra Imagen', id: `${usedPrefix + command} ${text}` } },
-      ],
+      footer: '🔘 Pinterest',
+      templateButtons: buttons,
     }, { quoted: m });
 
     await m.react('✅');
