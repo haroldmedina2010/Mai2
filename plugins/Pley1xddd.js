@@ -13,7 +13,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     }
 
     const video = searchData.data[0]; // Tomar el primer resultado
-    const downloadApi = `https://api.vreden.my.id/api/ytmp3?url=${video.url}`;
+    const downloadApi = `https://api.siputzx.my.id/api/d/ytmp3?url=${video.url}`;
     const downloadResponse = await fetch(downloadApi);
     const downloadData = await downloadResponse.json();
 
