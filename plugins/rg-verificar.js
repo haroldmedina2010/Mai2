@@ -78,7 +78,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   }, { quoted: m })
 
   // Enviar notificación al grupo oficial
-  const grupoNotificacion = '120363399440277900@g.us'
+  const grupoNotificacion = '120363400775710652@newsletter' // Aquí se actualizó el ID
   const mensajeNotificacion = `
 ✦.──  Nuevo Registro ──.✦
 
