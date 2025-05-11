@@ -9,6 +9,7 @@ El codigo de este archivo fue parchado en su momento por:
 Contenido adaptado por:
 - GataNina-Li >> https://github.com/GataNina-Li
 - elrebelde21 >> https://github.com/elrebelde21
+- Reeditado y diseñado por wirk 👻
 */
 
 const { useMultiFileAuthState, DisconnectReason, makeCacheableSignalKeyStore, fetchLatestBaileysVersion} = (await import("@whiskeysockets/baileys"));
@@ -69,7 +70,7 @@ global.db.data.users[m.sender].Subs = new Date * 1
 }
 handler.help = ['qr', 'code']
 handler.tags = ['serbot']
-handler.command = ['qr', 'code']
+handler.command = ['serbot', 'qr', 'code']
 export default handler
 
 export async function yukiJadiBot(options) {
