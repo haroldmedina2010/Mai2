@@ -36,7 +36,7 @@ const handler = async (m, { conn, text }) => {
                         type: 1  
                     }
                 ],
-                viewOnce: true,
+                viewOnce: false,
                 headerType: 4
             },
             { quoted: m }
