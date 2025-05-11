@@ -1,28 +1,28 @@
 import axios from 'axios';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) {
-    return m.reply(`✳️ Ingresa una palabra clave para buscar.\n\n📌 Ejemplo: ${usedPrefix + command} anime`);
-  }
+  if (!text) return m.reply(`✳️ Escribe lo que deseas buscar.\n\n📌 Ejemplo: ${usedPrefix + command} akame`);
 
-  m.react('🔎');
+  m.react('🔍');
 
   try {
-    const res = await axios.get(`https://api.dorrat.com/v2/pinterest?q=${encodeURIComponent(text)}`);
-    const results = res.data.result;
+    const { data } = await axios.get(`https://api.dorrat.com/v2/pinterest?q=${encodeURIComponent(text)}`);
+    
+    if (!data.result || !Array.isArray(data.result) || data.result.length === 0)
+      return m.reply('❌ No se encontraron resultados.');
 
-    if (!results || !results.length) {
-      return m.reply('❌ No se encontraron resultados en Pinterest.');
-    }
+    const url = data.result[Math.floor(Math.random() * data.result.length)];
 
-    const img = results[Math.floor(Math.random() * results.length)];
+    await conn.sendMessage(m.chat, {
+      image: { url },
+      caption: `✨ *Resultado de:* _${text}_`
+    }, { quoted: m });
 
-    await conn.sendFile(m.chat, img, 'pinterest.jpg', `✅ *Resultado para:* _${text}_`, m);
     m.react('✅');
 
   } catch (e) {
     console.error(e);
-    m.reply('❌ Hubo un error al obtener resultados de Pinterest.\nEs posible que la API esté fallando.');
+    m.reply('⚠️ Ocurrió un error al obtener la imagen.');
   }
 };
 
