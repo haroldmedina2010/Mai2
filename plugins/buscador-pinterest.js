@@ -1,48 +1,45 @@
+import cheerio from 'cheerio';
 import axios from 'axios';
 
-async function sendAlbumMessage(conn, jid, medias, options = {}) {
-  if (!Array.isArray(medias) || medias.length < 2) throw new Error("Se necesitan mínimo 2 imágenes para crear un álbum");
-
-  const caption = options.caption || '';
-  const quoted = options.quoted;
-
-  for (let i = 0; i < medias.length; i++) {
-    const media = medias[i];
-    await conn.sendMessage(jid, {
-      image: { url: media },
-      caption: i === 0 ? caption : null
-    }, { quoted });
-    await new Promise(res => setTimeout(res, 600)); // pequeña pausa
-  }
-}
-
 let handler = async (m, { conn, text }) => {
-  if (!text) return m.reply('*[ ⚠️ ] Ingresa una palabra para buscar en Pinterest*\n\nEj: .pinterest anime');
+  if (!text) return m.reply('⚠️ Ingresa una palabra clave para buscar en Pinterest.');
+
+  m.react('⏳');
 
   try {
-    m.react('⏳');
-    const res = await axios.get(`https://api.dorratz.com/v2/pinterest?q=${encodeURIComponent(text)}`);
-    const result = res.data.result;
-
-    if (!result || result.length < 2) {
-      return conn.reply(m.chat, `No se encontraron suficientes resultados para: "${text}".`, m);
-    }
-
-    const medias = result.slice(0, 10); // Máximo 10 imágenes
-    await sendAlbumMessage(conn, m.chat, medias, {
-      caption: `◜ Pinterest Search ◞\n\n🔎 *Búsqueda:* "${text}"\n📷 *Resultados:* ${medias.length}`,
-      quoted: m
+    const url = 'https://www.pinterest.com/search/pins/?q=' + encodeURIComponent(text);
+    const { data } = await axios.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0'
+      }
     });
 
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
+    const $ = cheerio.load(data);
+    const urls = [];
+
+    $('img[src^="https://i.pinimg.com/"]').each((i, el) => {
+      let img = $(el).attr('src');
+      if (img && !urls.includes(img)) urls.push(img);
+    });
+
+    if (!urls.length) return m.reply('❌ No se encontraron imágenes.');
+
+    const resultados = urls.slice(0, 8); // máx 8 para evitar spam
+
+    for (let i = 0; i < resultados.length; i++) {
+      await conn.sendFile(m.chat, resultados[i], 'img.jpg', `🔎 *Pinterest resultado ${i + 1}*`, m);
+      await new Promise(r => setTimeout(r, 400));
+    }
+
+    m.react('✅');
 
   } catch (e) {
     console.error(e);
-    m.reply('*[ ❌ ] Error al buscar en Pinterest.*');
+    m.reply('❌ Error al buscar imágenes. Pinterest puede estar bloqueando la solicitud.');
   }
 };
 
-handler.command = ['pinterest', 'pin', 'interest'];
+handler.command = ['pinterest', 'pin'];
 handler.help = ['pinterest <texto>'];
 handler.tags = ['buscador'];
 
