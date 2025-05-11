@@ -20,7 +20,7 @@ let teks = results.all.map(v => {
 │ *🔗 Enlace:* ${v.url}
 ╰─────────────୨୧`
   }
-}).filter(v => v).join('\n\n🌸───────────────🌸\n\n')
+}).filter(v => v).join('\n\n◦•●◉✿ 𝖡𝗒 𝖬𝖺𝗂 ✿◉●•◦\n\n')
 
 conn.sendFile(m.chat, tes[0].thumbnail, 'ytsearch.jpg', `☁️✨ *Aquí tienes lo que encontré:*\n\n${teks}`, fkontak, m)
 
