@@ -3,7 +3,7 @@ import axios from 'axios';
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) return m.reply(`✳️ Escribe lo que deseas buscar.\n\n📌 Ejemplo: ${usedPrefix + command} akame`);
 
-  m.react('🔍');
+  m.react('🖼️');
 
   try {
     const { data } = await axios.get(`https://api.dorrat.com/v2/pinterest?q=${encodeURIComponent(text)}`);
@@ -11,18 +11,21 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!data.result || !Array.isArray(data.result) || data.result.length === 0)
       return m.reply('❌ No se encontraron resultados.');
 
-    const url = data.result[Math.floor(Math.random() * data.result.length)];
+    const imgUrl = data.result[Math.floor(Math.random() * data.result.length)];
+
+    // Descargar la imagen como buffer
+    const res = await axios.get(imgUrl, { responseType: 'arraybuffer' });
 
     await conn.sendMessage(m.chat, {
-      image: { url },
-      caption: `✨ *Resultado de:* _${text}_`
+      image: Buffer.from(res.data),
+      caption: `✨ *Resultado para:* _${text}_`
     }, { quoted: m });
 
     m.react('✅');
 
-  } catch (e) {
-    console.error(e);
-    m.reply('⚠️ Ocurrió un error al obtener la imagen.');
+  } catch (err) {
+    console.error(err);
+    m.reply('⚠️ Ocurrió un error al obtener o enviar la imagen.');
   }
 };
 
