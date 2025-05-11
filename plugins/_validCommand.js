@@ -40,10 +40,10 @@ export async function before(m) {
     user.commands += 1;
   } else {
     const comando = m.text.trim().split(' ')[0];
-    await m.reply(`꒰ ❝ ɴᴏ ᴇxɪꜱᴛᴇ ❞ ꒱
+    //await m.reply(`꒰ ❝ ɴᴏ ᴇxɪꜱᴛᴇ ❞ ꒱
 
-≡ 🌸 \`Comando\` : » *${comando}*
-≡ 🧁 \`Sugerencia\` : » Usa *#help* para ver todos los comandos disponibles
-> *˚₊‧꒰૮₍｡•́︿•̀｡₎ა꒱ ✧*`);
+//≡ 🌸 \`Comando\` : » *${comando}*
+//≡ 🧁 \`Sugerencia\` : » Usa *#help* para ver todos los comandos disponibles
+//> *˚₊‧꒰૮₍｡•́︿•̀｡₎ა꒱ ✧*`);
   }
 }
