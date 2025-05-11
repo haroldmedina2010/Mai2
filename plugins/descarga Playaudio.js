@@ -26,7 +26,6 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 𔖲𔖮𔖭 *Autor:* ${video.author.name}
 𔖲𔖮𔖭 *Duración:* ${video.duration}
 𔖲𔖮𔖭 *Vistas:* ${video.views}
-𔖲𔖮𔖭 *Publicado:* ${video.publishedTime || 'Desconocido'}
 𔖲𔖮𔖭 *Url:* ${video.url || `https://www.youtube.com/watch?v=${video.videoId}`}
 
 ☁️ *Espera un momento mientras preparo tu audio...*
@@ -39,11 +38,11 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       image: { url: video.image },
       caption: infoMessage,
       contextInfo: {
-        forwardingScore: 999,
+        forwardingScore: 9999999999,
         isForwarded: true,
         externalAdReply: {
-          title: "☕︎︎ 𝘔𝘢𝘪 • 𝑊𝑜𝑟𝑙𝑑 𝑂𝑓 𝐶𝑢𝑡𝑒 🍁",
-          body: "✐ Dev 𝖡𝗒 𝖶𝗂𝗋𝗄 🌺",
+          title: "☕ Mai Bot 🪴",
+          body: "💚 Dev 𝖡𝗒 𝖶𝗂𝗋𝗄 🌺",
           thumbnailUrl: video.image,
           mediaUrl: "https://chat.whatsapp.com/KqkJwla1aq1LgaPiuFFtEY",
           mediaType: 2,
@@ -71,7 +70,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     await conn.sendMessage(m.chat, {
       audio: { url: audioUrl },
       mimetype: 'audio/mpeg',
-      ptt: false,
+      ptt: true,
       fileName: `🎵 ${video.title}.mp3`,
       contextInfo: {
         forwardingScore: 999,
