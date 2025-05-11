@@ -5,70 +5,47 @@ import { createHash } from 'crypto'
 import fetch from 'node-fetch'
 import moment from 'moment-timezone'
 
-// ✿ Sello mágico para validar el pacto con Hanako-kun ✿
-const SelloMistico = /\|?(.*)([.|] *?)([0-9]*)$/i
+const Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
 
-/**
- * ⋆｡°✩ Ritual de Invocación ✩°｡⋆
- * Hanako-san, Hanako-san... ¿Estás ahí?
- */
 let handler = async function (m, { conn, text, usedPrefix, command }) {
-  // ✧ Identificar al invocador espiritual
   const who = m.mentionedJid?.[0] || (m.fromMe ? conn.user.jid : m.sender)
   const mentionedJid = [who]
 
-  // ✧ Obtener la imagen del espejo del invocador
   const pp = await conn.profilePictureUrl(who, 'image').catch(() => 'https://files.catbox.moe/xr2m6u.jpg')
   const user = global.db.data.users[m.sender]
   const name2 = conn.getName(m.sender)
 
-  // ✧ Verificar si ya existe un pacto con Hanako-kun
   if (user.registered) {
-    return m.reply(`『✦』 ¡Ya existe un pacto entre nosotros, ${name2}-kun! (◕ᴗ◕✿)
-
-¿Deseas crear un nuevo pacto?
-Utiliza *${usedPrefix}unreg* para romper el sello actual.`)
+    return m.reply(`✦.── Ya estás Registrado ──.✦\n\n¿Deseas volver a registrarte?\nUtiliza *${usedPrefix}unreg* para borrar tu registro.`)
   }
 
-  // ✧ Verificar el formato del ritual
-  if (!SelloMistico.test(text)) {
-    return m.reply(`『❀』 ¡El ritual no es correcto! (っ °Д °;)っ
-
-✧ Formato correcto: *${usedPrefix + command} nombre.edad*
-✧ Ejemplo: *${usedPrefix + command} ${name2}.18*
-
-"Para invocar a Hanako-kun, debes escribir tu nombre y edad correctamente..."`)
+  if (!Reg.test(text)) {
+    return m.reply(`✦.── Formato Incorrecto ──.✦\n\nUso correcto:\n*${usedPrefix + command} nombre.edad*\nEjemplo:\n*${usedPrefix + command} ${name2}.18*`)
   }
 
-  // ✧ Extraer la información del ritual
-  let [_, name, __, age] = text.match(SelloMistico)
-  
-  // ✧ Validar el nombre del invocador
-  if (!name) return m.reply('『❀』 ¡Tu nombre no puede quedar en blanco! Hanako-kun necesita conocerte (⁠>⁠﹏⁠<⁠)')
-  if (!age) return m.reply('『❀』 ¡Tu edad es importante para el pacto! (╯°□°）╯︵ ┻━┻')
-  if (name.length >= 100) return m.reply('『❀』 ¡Ese nombre es demasiado largo! ¿Eres un yokai antiguo? (⊙_⊙)')
+  let [_, name, __, age] = text.match(Reg)
+  if (!name) return m.reply('✦.── Error ──.✦\n\n𔖲𔖮𔖭 El nombre no puede estar vacío.')
+  if (!age) return m.reply('✦.── Error ──.✦\n\n𔖲𔖮𔖭 La edad no puede estar vacía.')
+  if (name.length >= 100) return m.reply('✦.── Nombre muy largo ──.✦\n\n𔖲𔖮𔖭 El nombre no debe tener más de 100 caracteres.')
 
-  // ✧ Validar la edad del invocador
   age = parseInt(age)
-  if (age > 1000) return m.reply('『❀』 ¡Oh! ¿Eres un espíritu ancestral como yo? (◐.̃◐)')
-  if (age < 5) return m.reply('『❀』 Los niños pequeños no deberían jugar con yokais... ¡Es peligroso! (；⌣̀_⌣́)')
+  if (age > 1000) return m.reply('✦.── Edad demasiado alta ──.✦\n\n𔖲𔖮𔖭 Wow, el abuelo quiere jugar con el bot.')
+  if (age < 5) return m.reply('✦.── Edad muy baja ──.✦\n\n𔖲𔖮𔖭 ¿Un bebé programando bots?')
 
-  // ✧ Registrar al nuevo asistente de Hanako-kun
-  user.name = `${name}⋆˙⟡♱⟡˙⋆`.trim()
+  // Registro
+  user.name = `${name}✓`.trim()
   user.age = age
   user.regTime = +new Date()
   user.registered = true
 
-  // ✧ Bendiciones espirituales por el pacto
-  user.coin += 46       // Monedas de la suerte de Hanako
-  user.exp += 310       // Poder espiritual
-  user.joincount += 25  // Sellos de invocación
+  user.coin += 46
+  user.exp += 310
+  user.joincount += 25
 
-  // ✧ Crear el sello único del pacto
   const sn = createHash('md5').update(m.sender).digest('hex').slice(0, 20)
 
-  // ✧ Certificado del pacto con Hanako-kun
-  const certificadoPacto = `✦.──  Registro Completado ──.✦
+  const regbot = `
+✦.──  Registro Completado ──.✦
 
 𔖲𔖮𔖭 *Nombre* : ${name}
 𔖲𔖮𔖭 *Edad* : ${age} años
@@ -80,20 +57,19 @@ Utiliza *${usedPrefix}unreg* para romper el sello actual.`)
 𓆩 ❖ Tokens : +25
 
 ✧ *Verifica tu registro aca*! ✧
-➤ https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd`.trim()
+➤ https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd
+`.trim()
 
-  // ✧ Reacción mística
-  await m.react('👻')
+  await m.react('📩')
 
-  // ✧ Enviar el certificado del pacto
   await conn.sendMessage(m.chat, {
-    text: certificadoPacto,
+    text: regbot,
     contextInfo: {
       externalAdReply: {
-        title: '✧ Pacto con Hanako-kun Completado ✧',
-        body: 'https://whatsapp.com/channel/0029VayXJte65yD6LQGiRB0R',
+        title: '✧ Registro Completado ✧',
+        body: 'Únete a la comunidad de Mai',
         thumbnailUrl: pp,
-        sourceUrl: 'https://whatsapp.com/channel/0029VayXJte65yD6LQGiRB0R',
+        sourceUrl: 'https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd',
         mediaType: 1,
         showAdAttribution: true,
         renderLargerThumbnail: true
@@ -101,9 +77,10 @@ Utiliza *${usedPrefix}unreg* para romper el sello actual.`)
     }
   }, { quoted: m })
 
-  // ✧ Notificar al Reino Espiritual (grupo de notificaciones)
-  const reinoEspiritual = '120363400775710652@newsletter'
-  const mensajeNotificacion = `✦.──  Nuevo Registro ──.✦
+  // Enviar notificación al grupo oficial
+  const grupoNotificacion = '120363399440277900@g.us'
+  const mensajeNotificacion = `
+✦.──  Nuevo Registro ──.✦
 
 𔖲𔖮𔖭 *Nombre* : ${name}
 𔖲𔖮𔖭 *Edad* : ${age}
@@ -114,23 +91,22 @@ Utiliza *${usedPrefix}unreg* para romper el sello actual.`)
 𓆩 ✰ +310 experiencia
 𓆩 ❖ +25 tokens
 
-🕒 ${moment().format('YYYY-MM-DD HH:mm:ss')}`
+🕒 ${moment().format('YYYY-MM-DD HH:mm:ss')}
+`.trim()
 
-  // ✧ Intento de comunicación con el Reino Espiritual
   try {
     if (global.conn?.sendMessage) {
       const ppGroup = await conn.profilePictureUrl(who, 'image').catch(() => null)
-      await global.conn.sendMessage(reinoEspiritual, {
+      await global.conn.sendMessage(grupoNotificacion, {
         image: { url: ppGroup || pp },
         caption: mensajeNotificacion
       })
     }
   } catch (e) {
-    console.error('✧ Error al notificar al Reino Espiritual:', e)
+    console.error('Error al enviar notificación al grupo:', e)
   }
 }
 
-// ✧ Invocaciones permitidas ✧
 handler.help = ['reg']
 handler.tags = ['rg']
 handler.command = ['verify', 'verificar', 'reg', 'register', 'registrar']
