@@ -13,16 +13,16 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
     }
 
     const video = searchData.data[0]; // Tomar el primer resultado
-    const downloadApi = `https://api.vreden.my.id/api/ytmp3?url=${video.url}`;
+    const downloadApi = `https://api.siputzx.my.id/api/d/ytmp3?url=${video.url}`;
     const downloadResponse = await fetch(downloadApi);
     const downloadData = await downloadResponse.json();
 
-    if (!downloadData?.result?.download?.url) {
+    if (!downloadData?.result?.url) {
       return m.reply("❌ No se pudo obtener el audio del video.");
     }
 
     await conn.sendMessage(m.chat, {
-      audio: { url: downloadData.result.download.url },
+      audio: { url: downloadData.result.url },
       mimetype: 'audio/mpeg',
       ptt: true,
       fileName: `${video.title}.mp3`
