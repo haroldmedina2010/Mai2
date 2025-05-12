@@ -11,13 +11,13 @@ let handler = async (m, { conn, args }) => {
 🌸ི︶⏝︶ 𖦆 ︶⏝︶ ⸜(｡˃ ᵕ ˂ )⸝
 
 💖✨ ¡Holis @${userId.split('@')[0]}! ✨💖
-Bienvenido/a al menú de @${botname}~
-¡Espero que tengas un día súper lindo! ꒰ᐢ. .ᐢ꒱₊˚⊹
+_🪴 Bienvenido/a al menú de @${botname}~_
+*¡Espero que tengas un día súper lindo! ꒰ᐢ. .ᐢ꒱₊˚⊹*
 
 ╭ ─ ─ ─ ─ ʚ ♡ ɞ ─ ─ ─ ─ ╮
 🌸꒱  *Usuario ›* @${userId.split('@')[0]}
 🍡꒱  *Modo ›* Publico
-☕︎꒱  *Bot ›* ${(conn.user.jid == global.conn.user.jid ? 'Principal 🅥' : 'Prem Bot 🅑')}
+ ☕︎꒱  *Bot ›* ${(conn.user.jid == global.conn.user.jid ? 'Principal 🅥' : 'Prem Bot 🅑')}
 🎀꒱  *Activa ›* ${uptime}
 ⋆┄┄┄┄┄┄┄┄┄┄┄┄┄⋆
 🧸꒱  *Usuarios Totales ›* ${totalreg}
@@ -27,7 +27,7 @@ Bienvenido/a al menú de @${botname}~
 
 ¡Puedes tener tu propio *Sub-Bot*! Usa */qr* o */code* ✨
 
-꒰ ‧₊˚ ☁️ *INFO-BOT Kawaii* 🌷‧₊˚ ꒱
+꒰ ‧₊˚ ☁️ *INFO-BOT * 🌷‧₊˚ ꒱
 ୨୧ ꒱  */menu › /help*
 > _¡Mira todos mis lindos comandos!_
 ୨୧ ꒱  */uptime › /runtime*
