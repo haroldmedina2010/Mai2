@@ -8,540 +8,542 @@ let handler = async (m, { conn, args }) => {
     let totalCommands = Object.values(global.plugins).filter((v) => v.help && v.tags).length
     
     let txt = `
-ׄ    ִ ⏝︶ ׄ   ⋆   ׄ ︶⏝ ִ    ׄ  
+🌸ི︶⏝︶ 𖦆 ︶⏝︶ ⸜(｡˃ ᵕ ˂ )⸝
 
-> _Hola @${userId.split('@')[0]}, bienvenido/a al menú de @${botname}_
+💖✨ ¡Holis @${userId.split('@')[0]}! ✨💖
+Bienvenido/a al menú de @${botname}~
+¡Espero que tengas un día súper lindo! ꒰ᐢ. .ᐢ꒱₊˚⊹
 
-╭ׅ✿╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴✧╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴
-│</> *Cliente ›* @${userId.split('@')[0]}
-│➮ *Modo ›* Publico
-│☕︎ *Bot ›* ${(conn.user.jid == global.conn.user.jid ? 'Principal 🅥' : 'Prem Bot 🅑')}
-│𖢺 *Activa ›* ${uptime}
-│
-│○ *Usuarios ›* ${totalreg}
-│○ *Comandos ›* ${totalCommands}
-│○ *Baileys ›* Multi Device
-╰✿╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴✧╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜╴✧╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜
+╭ ─ ─ ─ ─ ʚ ♡ ɞ ─ ─ ─ ─ ╮
+🌸꒱  *Usuario ›* @${userId.split('@')[0]}
+🍡꒱  *Modo ›* Publico
+☕︎꒱  *Bot ›* ${(conn.user.jid == global.conn.user.jid ? 'Principal 🅥' : 'Prem Bot 🅑')}
+🎀꒱  *Activa ›* ${uptime}
+⋆┄┄┄┄┄┄┄┄┄┄┄┄┄⋆
+🧸꒱  *Usuarios Totales ›* ${totalreg}
+🍭꒱  *Comanditos ›* ${totalCommands}
+💌꒱  *Baileys ›* Multi Device
+╰ ─ ─ ─ ─ ʚ ♡ ɞ ─ ─ ─ ─ ╯
 
-Crea un *Sub-Bot* con tu número utilizando */qr* o */code*
+¡Puedes tener tu propio *Sub-Bot*! Usa */qr* o */code* ✨
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *INFO-BOT* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */menu › /help*
-> _*Ver la lista de comandos de la Bot.*_
-┃❀ᩧ̼ ❫❯ */uptime › /runtime*
-> _*Ver tiempo activo o en linea de la Bot.*_
-┃✿ᩧ̼ ❫❯ */sc › /script*
-> _*Link del repositorio oficial de la Bot*_
-┃❀ᩧ̼ ❫❯ */staff › /colaboradores*
-> _*Ver la lista de desarrolladores de la Bot.*_
-┃✿ᩧ̼ ❫❯ */serbot › /serbot code*
-> _*Crea una sesión de Sub-Bot.*_
-┃❀ᩧ̼ ❫❯ */bots › /sockets*
-> _*Ver la lista de Sub-Bots activos.*_
-┃✿ᩧ̼ ❫❯ */creador*
-> _*Contacto del creador de la Bot.*_
-┃❀ᩧ̼ ❫❯ */status › /estado*
-> _*Ver el estado actual de la Bot.*_
-┃✿ᩧ̼ ❫❯ */links › /grupos*
-> _*Ver los enlaces oficiales de la Bot.*_
-┃❀ᩧ̼ ❫❯ */infobot*
-> _*Ver la información completa de la Bot.*_
-┃✿ᩧ̼ ❫❯ */sug › /newcommand* + _<sugerencia>_
-> _*Sugiere un nuevo comando.*_
-┃❀ᩧ̼ ❫❯ */ping › /p*
-> _*Ver la velocidad de respuesta del Bot.*_
-┃✿ᩧ̼ ❫❯ */reporte › /reportar* + _<error>_
-> _*Reporta alguna falla o problema de la Bot.*_
-┃❀ᩧ̼ ❫❯ */sistema › /system*
-> _*Ver estado del sistema de alojamiento.*_
-┃✿ᩧ̼ ❫❯ */speed › /speedtest*
-> _*Ver las estadísticas de velocidad de la Bot.*_
-┃❀ᩧ̼ ❫❯ */views › /usuarios*
-> _*Ver la cantidad de usuarios registrados en el sistema.*_
-┃✿ᩧ̼ ❫❯ */funciones › /totalfunciones*
-> _*Ver todas las funciones de la Bot.*_
-┃❀ᩧ̼ ❫❯ */ds › /fixmsgespera*
-> _*Eliminar archivos de sesión innecesarios.*_
-┃✿ᩧ̼ ❫❯ */editautoresponder* + _<prompt>_
-> _*Configurar un Prompt personalizado de la Bot.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *INFO-BOT Kawaii* 🌷‧₊˚ ꒱
+୨୧ ꒱  */menu › /help*
+> _¡Mira todos mis lindos comandos!_
+୨୧ ꒱  */uptime › /runtime*
+> _¿Cuánto tiempo llevo despierto/a?_
+୨୧ ꒱  */sc › /script*
+> _El lugarcito donde nací 🏠_
+୨୧ ꒱  */staff › /colaboradores*
+> _Las personitas que me crearon 😇_
+୨୧ ꒱  */serbot › /serbot code*
+> _¡Crea tu propio mini-bot conmigo!_
+୨୧ ꒱  */bots › /sockets*
+> _Mira los Sub-Bots que andan por aquí_
+୨୧ ꒱  */creador*
+> _Habla con mi creador_
+୨୧ ꒱  */status › /estado*
+> _¿Cómo me siento hoy?_
+୨୧ ꒱  */links › /grupos*
+> _Mis grupitos oficiales_
+୨୧ ꒱  */infobot*
+> _Toda mi información secreta (¡shhh!)_
+୨୧ ꒱  */sug › /newcommand* + _<sugerencia>_
+> _¿Tienes una idea genial? ¡Cuéntame!_
+୨୧ ꒱  */ping › /p*
+> _¡Mide qué tan rápido soy!_
+୨୧ ꒱  */reporte › /reportar* + _<error>_
+> _Si algo no va bien, dímelo para arreglarlo_
+୨୧ ꒱  */sistema › /system*
+> _Mira dónde vivo yo_
+୨୧ ꒱  */speed › /speedtest*
+> _Mi velocidad secreta 🤫_
+୨୧ ꒱  */views › /usuarios*
+> _¿Cuántos amigos tengo registrados?_
+୨୧ ꒱  */funciones › /totalfunciones*
+> _Todas las cosas que puedo hacer_
+୨୧ ꒱  */ds › /fixmsgespera*
+> _Ayúdame a limpiar un poquito_
+୨୧ ꒱  */editautoresponder* + _<prompt>_
+> _Personaliza mis respuestas~_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *BUSCADORES* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */tiktoksearch › /tiktoks* + _<query>_
-> _*Buscador de videos de tiktok.*_
-┃❀ᩧ̼ ❫❯ */tweetposts* + _<query>_
-> _*Buscador de posts de Twitter/X.*_
-┃✿ᩧ̼ ❫❯ */ytsearch › /yts* + _<query>_
-> _*Realiza búsquedas de Youtube.*_
-┃❀ᩧ̼ ❫❯ */githubsearch* + _<user|repository>_
-> _*Buscador de usuarios/repositorios de GitHub.*_
-┃✿ᩧ̼ ❫❯ */cuevana › /cuevanasearch* + _<query>_
-> _*Buscador de películas/series por Cuevana.*_
-┃❀ᩧ̼ ❫❯ */google* + _<query>_
-> _*Realiza búsquedas por Google.*_
-┃✿ᩧ̼ ❫❯ */pin › /pinterest* + _<query>_
-> _*Buscador de imagenes de Pinterest.*_
-┃❀ᩧ̼ ❫❯ */imagen › /image* + _<query>_
-> _*buscador de imagenes de Google.*_
-┃✿ᩧ̼ ❫❯ */infoanime* + _<anime>_
-> _*Buscador de información de anime/manga.*_
-┃❀ᩧ̼ ❫❯ */hentaisearch › /searchhentai* + _<tag>_
-> _*Buscador de capítulos hentai.*_
-┃✿ᩧ̼ ❫❯ */xnxxsearch › /xnxxs* + _<query>_
-> _*Buscador de vídeos de Xnxx.*_
-┃❀ᩧ̼ ❫❯ */xvsearch › /xvideossearch* + _<query>_
-> _*Buscador de vídeos de Xvideos.*_
-┃✿ᩧ̼ ❫❯ */pornhubsearch › /phsearch* + _<query>_
-> _*Buscador de videos de Pornhub.*_
-┃❀ᩧ̼ ❫❯ */npmjs* + _<query>_
-> _*Buscandor de npmjs.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *BUSCADORES Mágicos* 🌷‧₊˚ ꒱
+୨୧ ꒱  */tiktoksearch › /tiktoks* + _<query>_
+> _Encuentra videos divertidos de TikTok!_
+୨୧ ꒱  */tweetposts* + _<query>_
+> _Busca cositas en Twitter/X_
+୨୧ ꒱  */ytsearch › /yts* + _<query>_
+> _Encuentra videos en YouTube 🎶_
+୨୧ ꒱  */githubsearch* + _<user|repository>_
+> _Busca tesoros en GitHub 💎_
+୨୧ ꒱  */cuevana › /cuevanasearch* + _<query>_
+> _Encuentra películas y series en Cuevana 🎬_
+୨୧ ꒱  */google* + _<query>_
+> _Pregúntale a San Google_
+୨୧ ꒱  */pin › /pinterest* + _<query>_
+> _Encuentra imágenes bonitas en Pinterest_
+୨୧ ꒱  */imagen › /image* + _<query>_
+> _Busca imágenes en Google_
+୨୧ ꒱  */infoanime* + _<anime>_
+> _Información sobre tu anime favorito 🍜_
+୨୧ ꒱  */hentaisearch › /searchhentai* + _<tag>_
+> _(⁄⁄>⁄ ▽ ⁄<⁄⁄) busca cap... capítulos..._
+୨୧ ꒱  */xnxxsearch › /xnxxs* + _<query>_
+> _(｡>﹏<｡) busca videitos..._
+୨୧ ꒱  */xvsearch › /xvideossearch* + _<query>_
+> _(>///<) busca más videitos..._
+୨୧ ꒱  */pornhubsearch › /phsearch* + _<query>_
+> _(๑• . •๑) Busca videos de Pornhub_
+୨୧ ꒱  */npmjs* + _<query>_
+> _Busca paquetes de npmjs_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *DESCARGAS* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */tiktok › /tt* + _<url|query>_
-> _*Descarga videos de TikTok.*_
-┃❀ᩧ̼ ❫❯ */mediafire › /mf* + _<url>_
-> _*Descargar un archivo de MediaFire.*_
-┃✿ᩧ̼ ❫❯ */pinvid › /pinvideo* + _<url>_
-> _*Descargar vídeos de Pinterest.*_
-┃❀ᩧ̼ ❫❯ */mega › /mg* + _<url>_
-> _*Descargar un archivo de MEGA.*_
-┃✿ᩧ̼ ❫❯ */play › /play2 › /mp3 › /mp4* + _<url|query>_
-> _*Descarga música/video de YouTube.*_
-┃❀ᩧ̼ ❫❯ */ytmp3 › /ytmp4* + _<url>_
-> _*Descarga música/video de YouTube mediante url.*_
-┃✿ᩧ̼ ❫❯ */fb › /facebook* + _<url>_
-> _*Descarga videos de Facebook.*_
-┃❀ᩧ̼ ❫❯ */twitter › /x* + _<url>_
-> _*Descargar un video de Twitter/X*_
-┃✿ᩧ̼ ❫❯ */ig › /instagram* + _<url>_
-> _*Descarga contenido de Instagram.*_
-┃❀ᩧ̼ ❫❯ */tts › /tiktoks* + _<query>_
-> _*Buscar videos de tiktok*_
-┃✿ᩧ̼ ❫❯ */terabox › /tb* + _<url>_
-> _*Descargar archivos por Terabox.*_
-┃❀ᩧ̼ ❫❯ */ttimg › /ttmp3* + _<url>_
-> _*Descarga fotos/audios de tiktok.*_
-┃✿ᩧ̼ ❫❯ */gitclone* + _<url>_
-> _*Descarga un repositorio de github.*_
-┃❀ᩧ̼ ❫❯ */xvideosdl* + _<url>_
-> _*Descarga videos porno de (Xvideos).*_
-┃✿ᩧ̼ ❫❯ */xnxxdl* + _<url>_
-> _*Descarga videos porno de (xnxx).*_
-┃❀ᩧ̼ ❫❯ */apk › /modapk* + _<query>_
-> _*Descarga un apk de Aptoide.*_
-┃✿ᩧ̼ ❫❯ */tiktokrandom › /ttrandom*
-> _*Descarga un video aleatorio de tiktok.*_
-┃❀ᩧ̼ ❫❯ */npmdl › /npmdownloader* + _<query>_
-> _*Descarga paquetes de NPMJs.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *DESCARGAS Kawaii* 🌷‧₊˚ ꒱
+୨୧ ꒱  */tiktok › /tt* + _<url|query>_
+> _Descarga videos de TikTok rápido!_
+୨୧ ꒱  */mediafire › /mf* + _<url>_
+> _Descarga archivos de MediaFire_
+୨୧ ꒱  */pinvid › /pinvideo* + _<url>_
+> _Descarga videos de Pinterest_
+୨୧ ꒱  */mega › /mg* + _<url>_
+> _Descarga archivos de MEGA_
+୨୧ ꒱  */play › /play2 › /mp3 › /mp4* + _<url|query>_
+> _Descarga música o videos de YouTube 🎶_
+୨୧ ꒱  */ytmp3 › /ytmp4* + _<url>_
+> _Descarga música o videos de YouTube con link_
+୨୧ ꒱  */fb › /facebook* + _<url>_
+> _Descarga videos de Facebook_
+୨୧ ꒱  */twitter › /x* + _<url>_
+> _Descarga videos de Twitter/X_
+୨୧ ꒱  */ig › /instagram* + _<url>_
+> _Descarga fotos y videos de Instagram_
+୨୧ ꒱  */tts › /tiktoks* + _<query>_
+> _Encuentra videos de tiktok_
+୨୧ ꒱  */terabox › /tb* + _<url>_
+> _Descarga archivos de Terabox_
+୨୧ ꒱  */ttimg › /ttmp3* + _<url>_
+> _Descarga fotos o audios de tiktok_
+୨୧ ꒱  */gitclone* + _<url>_
+> _Clona un repositorio de github_
+୨୧ ꒱  */xvideosdl* + _<url>_
+> _(๑˃́ᗩ˂̀) Descarga videos porno de Xvideos_
+୨୧ ꒱  */xnxxdl* + _<url>_
+> _(⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄) Descarga videos porno de xnxx_
+୨୧ ꒱  */apk › /modapk* + _<query>_
+> _Busca y descarga apks de Aptoide_
+୨୧ ꒱  */tiktokrandom › /ttrandom*
+> _Un video de tiktok al azar ✨_
+୨୧ ꒱  */npmdl › /npmdownloader* + _<query>_
+> _Descarga paquetes de NPMJs_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *ECONOMIA* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */work › /w › /trabajar*
-> _*Trabaja para ganar ${moneda}.*_
-┃❀ᩧ̼ ❫❯ */slut › /protituirse*
-> _*Trabaja como prostituta y gana ${moneda}.*_
-┃✿ᩧ̼ ❫❯ */coinflip › /cf › /suerte* + _<cantidad>_
-> _*Apuesta tus ${moneda} a cara o cruz.*_
-┃❀ᩧ̼ ❫❯ */crime › /crimen*
-> _*Intenta cometer un crime para ganar ${moneda}.*_
-┃✿ᩧ̼ ❫❯ */roulette › /ruleta › /rt* + _<cantidad> <color>_
-> _*Apuesta ${moneda} al color rojo o negro.*_
-┃❀ᩧ̼ ❫❯ */casino › /apostar* + _<cantidad>_
-> _*Apuesta tus ${moneda} en el casino.*_
-┃✿ᩧ̼ ❫❯ */slot* + _<cantidad>_
-> _*Apuesta tus ${moneda} en la ruleta y prueba tu suerte.*_
-┃❀ᩧ̼ ❫❯ */wallet › /cartera* + _<mention>_
-> _*Ver tus ${moneda} en la cartera.*_
-┃✿ᩧ̼ ❫❯ */bank › /banco* + _<mention>_
-> _*Ver tus ${moneda} en el banco.*_
-┃❀ᩧ̼ ❫❯ */deposit › /depositar › /d* + _<cantidad|all>_
-> _*Deposita tus ${moneda} al banco.*_
-┃✿ᩧ̼ ❫❯ */withdraw › /retirar › /with* + _<cantidad|all>_
-> _*Retira tus ${moneda} del banco.*_
-┃❀ᩧ̼ ❫❯ */transfer › /pay* + _<cantidad> <mention>_
-> _*Transfiere ${moneda} o XP a otros usuarios.*_
-┃✿ᩧ̼ ❫❯ */mine › /minar › /miming*
-> _*Trabaja como minero y recolecta recursos.*_
-┃❀ᩧ̼ ❫❯ */buy › /buyall* + _<cantidad|all>_
-> _*Compra ${moneda} con tu XP.*_
-┃✿ᩧ̼ ❫❯ */daily › /diario*
-> _*Reclama tu recompensa diaria.*_
-┃❀ᩧ̼ ❫❯ */cofre*
-> _*Reclama un cofre diario lleno de recursos.*_
-┃✿ᩧ̼ ❫❯ */weekly › /semanal*
-> _*Reclama tu regalo semanal.*_
-┃❀ᩧ̼ ❫❯ */monthly › /mensual*
-> _*Reclama tu recompensa mensual.*_
-┃✿ᩧ̼ ❫❯ */steal › /robar › /rob* + _<mention>_
-> _*Intenta robarle ${moneda} a alguien.*_
-┃❀ᩧ̼ ❫❯ */robarxp › /robxp* + _<mention>_
-> _*Intenta robar XP a un usuario.*_
-┃✿ᩧ̼ ❫❯ */economyboard › /eboard › /baltop*
-> _*Ver el ranking de usuarios con más ${moneda}.*_
-┃❀ᩧ̼ ❫❯ */adventure › /aventura*
-> _*Aventúrate en un nuevo reino y recolecta recursos.*_
-┃✿ᩧ̼ ❫❯ */heal › /curar*
-> _*Cura tu salud para volverte aventurar.*_
-┃❀ᩧ̼ ❫❯ */hunt › /cazar › /berburu*
-> _*Aventúrate en una caza de animales.*_
-┃✿ᩧ̼ ❫❯ */inv › /inventario*
-> _*Ver tu inventario con todos tus ítems.*_
-┃❀ᩧ̼ ❫❯ */explorar › /mazmorra*
-> _*Explorar mazmorras para ganar ${moneda}.*_
-┃✿ᩧ̼ ❫❯ */halloween*
-> _*Reclama tu dulce o truco (Solo en Halloween).*_
-┃❀ᩧ̼ ❫❯ */christmas › /navidad*
-> _*Reclama tu regalo navideño (Solo en Navidad).*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *ECONOMÍA Tierna* 🌷‧₊˚ ꒱
+୨୧ ꒱  */work › /w › /trabajar*
+> _¡A ganar ${moneda} con esfuerzo!_
+୨୧ ꒱  */slut › /protituirse*
+> _(>///<) Un trabajo... especial_
+୨୧ ꒱  */coinflip › /cf › /suerte* + _<cantidad>_
+> _Cara o cruz, ¿tendrás suerte?_
+୨୧ ꒱  */crime › /crimen*
+> _(눈_눈) Intenta un crimen..._
+୨୧ ꒱  */roulette › /ruleta › /rt* + _<cantidad> <color>_
+> _Apuesta en la ruleta mágica_
+୨୧ ꒱  */casino › /apostar* + _<cantidad>_
+> _Prueba suerte en el casino ✨_
+୨୧ ꒱  */slot* + _<cantidad>_
+> _Apostando en la máquina tragamonedas_
+୨୧ ꒱  */wallet › /cartera* + _<mention>_
+> _Mira cuántas ${moneda} tienes_
+୨୧ ꒱  */bank › /banco* + _<mention>_
+> _Tus ahorros en el banco 🏦_
+୨୧ ꒱  */deposit › /depositar › /d* + _<cantidad|all>_
+> _Guarda tus ${moneda} en el banco_
+୨୧ ꒱  */withdraw › /retirar › /with* + _<cantidad|all>_
+> _Saca tus ${moneda} del banco_
+୨୧ ꒱  */transfer › /pay* + _<cantidad> <mention>_
+> _Comparte tus ${moneda} o XP con amigos_
+୨୧ ꒱  */mine › /minar › /miming*
+> _¡A minar para encontrar tesoros! ⛏️_
+୨୧ ꒱  */buy › /buyall* + _<cantidad|all>_
+> _Cambia tu XP por ${moneda}_
+୨୧ ꒱  */daily › /diario*
+> _Tu regalito diario 🎁_
+୨୧ ꒱  */cofre*
+> _Un cofre lleno de sorpresas diarias!_
+୨୧ ꒱  */weekly › /semanal*
+> _Tu regalo de la semana ✨_
+୨୧ ꒱  */monthly › /mensual*
+> _Tu recompensa del mes 🎉_
+୨୧ ꒱  */steal › /robar › /rob* + _<mention>_
+> _(¬_¬ ) Intenta robar ${moneda}..._
+୨୧ ꒱  */robarxp › /robxp* + _<mention>_
+> _(〃＞皿＜) Intenta robar XP..._
+୨୧ ꒱  */economyboard › /eboard › /baltop*
+> _Quién tiene más ${moneda}?_
+୨୧ ꒱  */adventure › /aventura*
+> _Embárcate en una aventura! 🗺️_
+୨୧ ꒱  */heal › /curar*
+> _Cura tus heridas para seguir aventurando ❤️‍🩹_
+୨୧ ꒱  */hunt › /cazar › /berburu*
+> _¡A cazar animalitos (virtuales)!_
+୨୧ ꒱  */inv › /inventario*
+> _Mira todas tus cositas ✨_
+୨୧ ꒱  */explorar › /mazmorra*
+> _Explora mazmorras secretas! 🗝️_
+୨୧ ꒱  */halloween*
+> _Dulce o truco! (Solo en Halloween)_
+୨୧ ꒱  */christmas › /navidad*
+> _Tu regalo navideño! (Solo en Navidad) 🎄_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *GACHA* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */rollwaifu › /rw › /roll*
-> _*Waifu o husbando aleatorio.*_
-┃❀ᩧ̼ ❫❯ */claim › /c › /reclamar* + _<mention waifu>_
-> _*Reclamar un personaje.*_
-┃✿ᩧ̼ ❫❯ */harem › /waifus › /claims*
-> _*Ver tus personajes reclamados.*_
-┃❀ᩧ̼ ❫❯ */charimage › /waifuimage › /wimage* + _<waifu>_
-> _*Ver una imagen de un personaje.*_
-┃✿ᩧ̼ ❫❯ */charinfo › /winfo › /waifuinfo* + _<waifu>_
-> _*Ver información de un personaje.*_
-┃❀ᩧ̼ ❫❯ */givechar › /givewaifu › /regalar* + _<mention> <waifu>_
-> _*Regalar un personaje a otro usuario.*_
-┃✿ᩧ̼ ❫❯ */vote › /votar* + _<waifu>_
-> _*Votar por un personaje para subir su valor.*_
-┃❀ᩧ̼ ❫❯ */waifusboard › /waifustop › /topwaifus*
-> _*Ver el top de personajes con mayor valor.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *GACHA Suavecito* 🌷‧₊˚ ꒱
+୨୧ ꒱  */rollwaifu › /rw › /roll*
+> _Encuentra tu waifu o husbando ideal!_
+୨୧ ꒱  */claim › /c › /reclamar* + _<mention waifu>_
+> _Adopta un personaje_
+୨୧ ꒱  */harem › /waifus › /claims*
+> _Mira los personajes que has adoptado_
+୨୧ ꒱  */charimage › /waifuimage › /wimage* + _<waifu>_
+> _Una fotito de tu personaje favorito 📸_
+୨୧ ꒱  */charinfo › /winfo › /waifuinfo* + _<waifu>_
+> _Toda la info de un personaje_
+୨୧ ꒱  */givechar › /givewaifu › /regalar* + _<mention> <waifu>_
+> _Regala un personaje a un amigo!_
+୨୧ ꒱  */vote › /votar* + _<waifu>_
+> _Vota por tu personaje preferido_
+୨୧ ꒱  */waifusboard › /waifustop › /topwaifus*
+> _Los personajes más valiosos ✨_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *STICKERS* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */sticker › /s*
-> _*Crea stickers de (imagen/video)*_
-┃❀ᩧ̼ ❫❯ */setmeta* + _<packname> | <author>_
-> _*Estable un pack y autor para los stickers.*_
-┃✿ᩧ̼ ❫❯ */delmeta*
-> _*Elimina tu pack de stickers.*_
-┃❀ᩧ̼ ❫❯ */pfp › /getpic* + _<mention>_
-> _*Obtén la foto de perfil de un usuario.*_
-┃✿ᩧ̼ ❫❯ */qc* + _<text|mention>_
-> _*Crea stickers con texto o de un usuario.*_
-┃❀ᩧ̼ ❫❯ */toimg › /img*
-> _*Convierte stickers en imagen.*_
-┃✿ᩧ̼ ❫❯ */brat › /ttp › /attp*︎ + _<text>_
-> _*Crea stickers con texto.*_
-┃❀ᩧ̼ ❫❯ */emojimix* + _<emoji1+emoji2>_
-> _*Fuciona 2 emojis para crear un sticker.*_
-┃✿ᩧ̼ ❫❯ */wm › /take* + _<packname> | <author>_
-> _*Cambia el nombre de los stickers.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *STICKERS Adorables* 🌷‧₊˚ ꒱
+୨୧ ꒱  */sticker › /s*
+> _¡Crea stickers lindos de tus fotos o videos!_
+୨୧ ꒱  */setmeta* + _<packname> | <author>_
+> _Ponle nombre y autor a tus stickers_
+୨୧ ꒱  */delmeta*
+> _Elimina tu pack de stickers_
+୨୧ ꒱  */pfp › /getpic* + _<mention>_
+> _Mira la foto de perfil de alguien 👀_
+୨୧ ꒱  */qc* + _<text|mention>_
+> _Crea stickers con texto o de un amigo!_
+୨୧ ꒱  */toimg › /img*
+> _Convierte stickers en imágenes_
+୨୧ ꒱  */brat › /ttp › /attp*︎ + _<text>_
+> _Stickers con texto animado!_
+୨୧ ꒱  */emojimix* + _<emoji1+emoji2>_
+> _¡Combina 2 emojis para un sticker único!_
+୨୧ ꒱  */wm › /take* + _<packname> | <author>_
+> _Cambia el nombre de tus stickers_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *HERRAMIENTAS* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */calcular › /cal* + _<ecuacion>_
-> _*Calcular todo tipo de ecuaciones.*_
-┃❀ᩧ̼ ❫❯ */tiempo › /clima* + _<pais|ciudad>_
-> _*Ver el clima de un pais/ciudad.*_
-┃✿ᩧ̼ ❫❯ */horario*
-> _*Ver el horario global de los países.*_
-┃❀ᩧ̼ ❫❯ */fake › /fakereply* + _<mention> <text>_
-> _*Crea un mensaje falso de un usuario.*_
-┃✿ᩧ̼ ❫❯ */enhance › /remini › /hd*
-> _*Mejora la calidad de una imagen.*_
-┃❀ᩧ̼ ❫❯ */letra* + _<text>_
-> _*Cambia la fuente de las letras.*_
-┃✿ᩧ̼ ❫❯ */read › /readviewonce › /ver*
-> _*Ver imágenes de una sola vista.*_
-┃❀ᩧ̼ ❫❯ */whatmusic › /shazam*
-> _*Descubre el nombre de canciones o vídeos.*_
-┃✿ᩧ̼ ❫❯ */ss › /ssweb* + _<url>_
-> _*Ver el estado de una página web.*_
-┃❀ᩧ̼ ❫❯ */length › /tamaño*
-> _*Cambia el tamaño de imágenes y vídeos.*_
-┃✿ᩧ̼ ❫❯ */say › /decir* + _<text>_
-> _*Repetir un mensaje.*_
-┃❀ᩧ̼ ❫❯ */todoc › /toducument*
-> _*Crea documentos de (audio, imágenes y vídeos).*_
-┃✿ᩧ̼ ❫❯ */translate › /traducir › /trad* + _<idioma> <text>_
-> _*Traduce palabras en otros idiomas.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *HERRAMIENTAS Mágicas* 🌷‧₊˚ ꒱
+୨୧ ꒱  */calcular › /cal* + _<ecuacion>_
+> _Resuelve ecuaciones fácilmente!_
+୨୧ ꒱  */tiempo › /clima* + _<pais|ciudad>_
+> _Mira el clima de un lugar ☀️☁️_
+୨୧ ꒱  */horario*
+> _Los horarios del mundo_
+୨୧ ꒱  */fake › /fakereply* + _<mention> <text>_
+> _Crea un mensaje falso divertido!_
+୨୧ ꒱  */enhance › /remini › /hd*
+> _Mejora la calidad de tus fotos ✨_
+୨୧ ꒱  */letra* + _<text>_
+> _Cambia la fuente de tus mensajes_
+୨୧ ꒱  */read › /readviewonce › /ver*
+> _Mira imágenes de una sola vista (sin que se enteren!)_
+୨୧ ꒱  */whatmusic › /shazam*
+> _Descubre el nombre de esa canción! 🎶_
+୨୧ ꒱  */ss › /ssweb* + _<url>_
+> _Mira cómo se ve una página web_
+୨୧ ꒱  */length › /tamaño*
+> _Cambia el tamaño de imágenes y videos_
+୨୧ ꒱  */say › /decir* + _<text>_
+> _Repite lo que digo!_
+୨୧ ꒱  */todoc › /toducument*
+> _Convierte audios, imágenes y videos en documentos_
+୨୧ ꒱  */translate › /traducir › /trad* + _<idioma> <text>_
+> _Habla en otros idiomas! 🌎_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *PERFIL* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */reg › /verificar › /register* + _<nombre.edad>_
-> _*Registra tu nombre y edad en el bot.*_
-┃❀ᩧ̼ ❫❯ */unreg*
-> _*Elimina tu registro del bot.*_
-┃✿ᩧ̼ ❫❯ */profile › /perfil* + _<mention>_
-> _*Muestra tu perfil o la de un usuario.*_
-┃❀ᩧ̼ ❫❯ */marry* + _<mention>_
-> _*Propón matrimonio a otro usuario.*_
-┃✿ᩧ̼ ❫❯ */divorce*
-> _*Divorciarte de tu pareja.*_
-┃❀ᩧ̼ ❫❯ */setgenre › /setgenero* + _<hombre|mujer>_
-> _*Establece tu género en el perfil del bot.*_
-┃✿ᩧ̼ ❫❯ */delgenre › /delgenero*
-> _*Elimina tu género del perfil del bot.*_
-┃❀ᩧ̼ ❫❯ */setbirth › /setnacimiento* + _<dia/mes/año|mes/dia>_
-> _*Establece tu fecha de nacimiento en el perfil del bot.*_
-┃✿ᩧ̼ ❫❯ */delbirth › /delnacimiento*
-> _*Elimina tu fecha de nacimiento del perfil del bot.*_
-┃❀ᩧ̼ ❫❯ */setdescription › /setdesc* + _<text>_
-> _*Establece una descripción en tu perfil del bot.*_
-┃✿ᩧ̼ ❫❯ */deldescription › /deldesc*
-> _*Elimina la descripción de tu perfil del bot.*_
-┃❀ᩧ̼ ❫❯ */lboard › /lb* + _<pagina>_
-> _*Top de usuarios con más (experiencia y nivel).*_
-┃✿ᩧ̼ ❫❯ */level › /lvl* + _<mention>_
-> _*Ver tu nivel y experiencia actual.*_
-┃❀ᩧ̼ ❫❯ */comprarpremium › /premium*
-> _*Compra un pase premium para usar el bot sin límites.*_
-┃✿ᩧ̼ ❫❯ */confesiones › /confesar* + _<mention> <mensaje>_
-> _*Confiesa tus sentimientos a alguien de manera anonima.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *PERFIL Encantador* 🌷‧₊˚ ꒱
+୨୧ ꒱  */reg › /verificar › /register* + _<nombre.edad>_
+> _Regístrate para ser mi amigo/a!_
+୨୧ ꒱  */unreg*
+> _Si ya no quieres ser mi amigo/a... (ಥ﹏ಥ)_
+୨୧ ꒱  */profile › /perfil* + _<mention>_
+> _Mira tu perfil o el de un amigo!_
+୨୧ ꒱  */marry* + _<mention>_
+> _¡Propón matrimonio a tu crush! 💍_
+୨୧ ꒱  */divorce*
+> _Si ya no va más... 💔_
+୨୧ ꒱  */setgenre › /setgenero* + _<hombre|mujer>_
+> _Cuéntame si eres chico o chica_
+୨୧ ꒱  */delgenre › /delgenero*
+> _Ya no quieres decir tu género?_
+୨୧ ꒱  */setbirth › /setnacimiento* + _<dia/mes/año|mes/dia>_
+> _Cuándo es tu cumple? 🎂_
+୨୧ ꒱  */delbirth › /delnacimiento*
+> _No quieres que sepa tu cumple?_
+୨୧ ꒱  */setdescription › /setdesc* + _<text>_
+> _Pon una descripción genial en tu perfil!_
+୨୧ ꒱  */deldescription › /deldesc*
+> _Quita la descripción_
+୨୧ ꒱  */lboard › /lb* + _<pagina>_
+> _Quién tiene más experiencia y nivel?_
+୨୧ ꒱  */level › /lvl* + _<mention>_
+> _Mira tu nivel actual ✨_
+୨୧ ꒱  */comprarpremium › /premium*
+> _Sé premium para usarme sin límites!_
+୨୧ ꒱  */confesiones › /confesar* + _<mention> <mensaje>_
+> _Dile algo a alguien en secreto~ 🤫_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *GRUPOS* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */hidetag* + _<text>_
-> _*Envia un mensaje mencionando a todos los usuarios.*_
-┃❀ᩧ̼ ❫❯ */groupinfo › /gp*
-> _*Ver la Informacion del grupo.*_
-┃✿ᩧ̼ ❫❯ */listonline › /linea*
-> _*Ver la lista de los usuarios en linea.*_
-┃❀ᩧ̼ ❫❯ */setwelcome* + _<text>_
-> _*Establecer un mensaje de bienvenida personalizado.*_
-┃✿ᩧ̼ ❫❯ */setbye* + _<text>_
-> _*Establecer un mensaje de despedida personalizado.*_
-┃❀ᩧ̼ ❫❯ */link*
-> _*El bot envia el link del grupo.*_
-┃✿ᩧ̼ ❫❯ */admins › /admin*
-> _*Mencionar a los admins para solicitar ayuda.*_
-┃❀ᩧ̼ ❫❯ */revoke › /restablecer*
-> _*Restablecer el enlace del grupo.*_
-┃✿ᩧ̼ ❫❯ */group › /grupo* + _<open|close>_
-> _*Cierra o abre el grupo para todos los miembros.*_
-┃❀ᩧ̼ ❫❯ */kick* + _<mention>_
-> _*Elimina un usuario de un grupo.*_
-┃✿ᩧ̼ ❫❯ */add › /añadir › /agregar* + _<numero>_
-> _*Invita a un usuario a tu grupo.*_
-┃❀ᩧ̼ ❫❯ */promote* + _<mention>_
-> _*El bot dara administrador al usuario mencionando.*_
-┃✿ᩧ̼ ❫❯ */demote* + _<mention>_
-> _*El bot quitara administrador al usuario mencionando.*_
-┃❀ᩧ̼ ❫❯ */setgpbaner › /groupimg*
-> _*Cambiar la imagen del grupo.*_
-┃✿ᩧ̼ ❫❯ */setgpname › /groupname* + _<text>_
-> _*Cambiar el nombre del grupo.*_
-┃❀ᩧ̼ ❫❯ */setgpdesc › /groupdesc* + _<text>_
-> _*Cambiar la descripción del grupo.*_
-┃✿ᩧ̼ ❫❯ */warn › /advertir › /warning* + _<mention> <razon>_
-> _*Darle una advertencia aún usuario.*_
-┃❀ᩧ̼ ❫❯ */unwarn › /delwarn* + _<mention>_
-> _*Quitar advertencias.*_
-┃✿ᩧ̼ ❫❯ */advlist › /listadv*
-> _*Ver lista de usuarios advertidos.*_
-┃❀ᩧ̼ ❫❯ */bot* + _<on|off>_
-> _*Enciende o apaga el bot en un grupo.*_
-┃✿ᩧ̼ ❫❯ */mute* + _<mention>_
-> _*El bot elimina los mensajes del usuario.*_
-┃❀ᩧ̼ ❫❯ */unmute* + _<mention>_
-> _*El bot deja de eliminar los mensajes del usuario.*_
-┃✿ᩧ̼ ❫❯ */encuesta › /poll* + _<pregunta|opcion1|opcion2...>_
-> _*Crea una encuesta.*_
-┃❀ᩧ̼ ❫❯ */delete › /del*
-> _*Elimina mensaje de otros usuarios.*_
-┃✿ᩧ̼ ❫❯ */fantasmas*
-> _*Ver lista de inactivos del grupo.*_
-┃❀ᩧ̼ ❫❯ */kickfantasmas*
-> _*Elimina a los inactivos del grupo.*_
-┃✿ᩧ̼ ❫❯ */invocar › /tagall › /todos* + _<text>_
-> _*Invoca a todos los usuarios de un grupo.*_
-┃❀ᩧ̼ ❫❯ */setemoji › /setemo* + _<emoji>_
-> _*Cambia el emoji que se usa en la invitación de usuarios.*_
-┃✿ᩧ̼ ❫❯ */listnum › /kicknum* + _<prefijo>_
-> _*Elimine a usuario por el prefijo de país.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *GRUPOS Divertidos* 🌷‧₊˚ ꒱
+୨୧ ꒱  */hidetag* + _<text>_
+> _Envía un mensaje que todos verán!_
+୨୧ ꒱  */groupinfo › /gp*
+> _La info del grupo ✨_
+୨୧ ꒱  */listonline › /linea*
+> _Mira quién está en línea ahora_
+୨୧ ꒱  */setwelcome* + _<text>_
+> _Un mensaje lindo para los nuevos miembros!_
+୨୧ ꒱  */setbye* + _<text>_
+> _Un mensaje triste para los que se van (;-;)_
+୨୧ ꒱  */link*
+> _El link para que entren más amigos!_
+୨୧ ꒱  */admins › /admin*
+> _Llama a los admins si necesitas ayuda_
+୨୧ ꒱  */revoke › /restablecer*
+> _Cambia el link del grupo_
+୨୧ ꒱  */group › /grupo* + _<open|close>_
+> _Abre o cierra el grupo_
+୨୧ ꒱  */kick* + _<mention>_
+> _Saca a alguien del grupo (solo si es necesario!)_
+୨୧ ꒱  */add › /añadir › /agregar* + _<numero>_
+> _Invita a un amigo al grupo!_
+୨୧ ꒱  */promote* + _<mention>_
+> _Haz admin a un amigo!_
+୨୧ ꒱  */demote* + _<mention>_
+> _Quita el admin a alguien_
+୨୧ ꒱  */setgpbaner › /groupimg*
+> _Cambia la foto del grupo_
+୨୧ ꒱  */setgpname › /groupname* + _<text>_
+> _Cambia el nombre del grupo_
+୨୧ ꒱  */setgpdesc › /groupdesc* + _<text>_
+> _Cambia la descripción del grupo_
+୨୧ ꒱  */warn › /advertir › /warning* + _<mention> <razon>_
+> _Dale una advertencia a alguien_
+୨୧ ꒱  */unwarn › /delwarn* + _<mention>_
+> _Quita una advertencia_
+୨୧ ꒱  */advlist › /listadv*
+> _Mira quién tiene advertencias_
+୨୧ ꒱  */bot* + _<on|off>_
+> _Enciéndeme o apágame en este grupo_
+୨୧ ꒱  */mute* + _<mention>_
+> _Ya no veré los mensajes de este usuario_
+୨୧ ꒱  */unmute* + _<mention>_
+> _Volveré a ver los mensajes de este usuario_
+୨୧ ꒱  */encuesta › /poll* + _<pregunta|opcion1|opcion2...>_
+> _Crea una encuesta divertida!_
+୨୧ ꒱  */delete › /del*
+> _Elimina mis mensajes_
+୨୧ ꒱  */fantasmas*
+> _Mira quiénes no hablan mucho (👻)_
+୨୧ ꒱  */kickfantasmas*
+> _Saca a los que no hablan (｡>ㅅ<｡)_
+୨୧ ꒱  */invocar › /tagall › /todos* + _<text>_
+> _¡Llama a todos los del grupo!_
+୨୧ ꒱  */setemoji › /setemo* + _<emoji>_
+> _Cambia el emoji de la invitación_
+୨୧ ꒱  */listnum › /kicknum* + _<prefijo>_
+> _Saca usuarios por su prefijo de país_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *ANIME* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */angry › /enojado* + _<mention>_
-> _*Estar enojado con un usuario.*_
-┃❀ᩧ̼ ❫❯ */bite* + _<mention>_
-> _*Muerde a un usuario.*_
-┃✿ᩧ̼ ❫❯ */bleh* + _<mention>_
-> _*Sacar la lengua a un usuario.*_
-┃❀ᩧ̼ ❫❯ */blush* + _<mention>_
-> _*Sonrojate por algo o por un usuario.*_
-┃✿ᩧ̼ ❫❯ */bored › /aburrido* + _<mention>_
-> _*Estar aburrido con un usuario.*_
-┃❀ᩧ̼ ❫❯ */cry* + _<mention>_
-> _*Llorar por algo o por un usuario.*_
-┃✿ᩧ̼ ❫❯ */cuddle* + _<mention>_
-> _*Acurrucarse con un usuario.*_
-┃❀ᩧ̼ ❫❯ */dance* + _<mention>_
-> _*Baila solo o con un usuario.*_
-┃✿ᩧ̼ ❫❯ */drunk* + _<mention>_
-> _*Estar borracho con un usuario.*_
-┃❀ᩧ̼ ❫❯ */eat › /comer* + _<mention>_
-> _*Come algo o con un usuario.*_
-┃✿ᩧ̼ ❫❯ */facepalm* + _<mention>_
-> _*Darle una palmada en la cara a un usuario.*_
-┃❀ᩧ̼ ❫❯ */happy › /feliz* + _<mention>_
-> _*Salta de felicidad solo o con un usuario.*_
-┃✿ᩧ̼ ❫❯ */hug* + _<mention>_
-> _*Dar un abrazo a un usuario.*_
-┃❀ᩧ̼ ❫❯ */impregnate › /preg* + _<mention>_
-> _*Embarazar a un usuario.*_
-┃✿ᩧ̼ ❫❯ */kill* + _<mention>_
-> _*Asesina a un usuario.*_
-┃❀ᩧ̼ ❫❯ */kiss › /besar › /kiss2* + _<mention>_
-> _*Dar un beso a un usuario.*_
-┃✿ᩧ̼ ❫❯ */laugh* + _<mention>_
-> _*Reírte de algo o de un usuario.*_
-┃❀ᩧ̼ ❫❯ */lick* + _<mention>_
-> _*Lamer a un usuario.*_
-┃✿ᩧ̼ ❫❯ */love › /amor* + _<mention>_
-> _*Sentirse enamorado de un usuario.*_
-┃❀ᩧ̼ ❫❯ */pat* + _<mention>_
-> _*Acaricia a un usuario.*_
-┃✿ᩧ̼ ❫❯ */poke* + _<mention>_
-> _*Picar a un usuario.*_
-┃❀ᩧ̼ ❫❯ */pout* + _<mention>_
-> _*Hacer pucheros a un usuario.*_
-┃✿ᩧ̼ ❫❯ */punch* + _<mention>_
-> _*Dar un puñetazo a un usuario.*_
-┃❀ᩧ̼ ❫❯ */run* + _<mention>_
-> _*Correr solo o con un usuario.*_
-┃✿ᩧ̼ ❫❯ */sad › /triste* + _<mention>_
-> _*Expresar tristeza por algo o por un usuario.*_
-┃❀ᩧ̼ ❫❯ */scared* + _<mention>_
-> _*Estar asustado por algo o por un usuario.*_
-┃✿ᩧ̼ ❫❯ */seduce* + _<mention>_
-> _*Seducir a un usuario.*_
-┃❀ᩧ̼ ❫❯ */shy › /timido* + _<mention>_
-> _*Sentir timidez por algo o por un usuario.*_
-┃✿ᩧ̼ ❫❯ */slap* + _<mention>_
-> _*Dar una bofetada a un usuario.*_
-┃❀ᩧ̼ ❫❯ */dias › /days* + _<mention>_
-> _*Darle los buenos días a alguien.*_
-┃✿ᩧ̼ ❫❯ */noches › /nights* + _<mention>_
-> _*Darle las buenas noches a alguien.*_
-┃❀ᩧ̼ ❫❯ */sleep* + _<mention>_
-> _*Tumbarte a dormir solo o con un usuario.*_
-┃✿ᩧ̼ ❫❯ */smoke* + _<mention>_
-> _*Fumar solo o con un usuario.*_
-┃❀ᩧ̼ ❫❯ */think* + _<mention>_
-> _*Pensar en algo o en un usuario.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *ANIME y Reacciones Kawaii* 🌷‧₊˚ ꒱
+୨୧ ꒱  */angry › /enojado* + _<mention>_
+> _(╬ Ò ‸ Ó) ¡Estoy enojado/a!_
+୨୧ ꒱  */bite* + _<mention>_
+> _(๑•́ ₃ •̀๑) Muerde a un amigo!_
+୨୧ ꒱  */bleh* + _<mention>_
+> _😛 Saca la lengua!_
+୨୧ ꒱  */blush* + _<mention>_
+> _(⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄) ¡Me sonrojo!_
+୨୧ ꒱  */bored › /aburrido* + _<mention>_
+> _(｡•́︿•̀｡) Qué aburrido..._
+୨୧ ꒱  */cry* + _<mention>_
+> _(╥﹏╥) Llorando por ti..._
+୨୧ ꒱  */cuddle* + _<mention>_
+> _(๑´ cuddle \`๑) Acurruquémonos!_
+୨୧ ꒱  */dance* + _<mention>_
+> _٩(｡˃ ᵕ ˂ )و ¡A bailar!_
+୨୧ ꒱  */drunk* + _<mention>_
+> _(っ˘з(˘⌣˘ ) Está medio borracho/a_
+୨୧ ꒱  */eat › /comer* + _<mention>_
+> _(๑>ڡ<๑) ¡Comamos algo rico!_
+୨୧ ꒱  */facepalm* + _<mention>_
+> _(－_－) Palmada en la cara_
+୨୧ ꒱  */happy › /feliz* + _<mention>_
+> _ヽ(✿ﾟ▽ﾟ)ノ ¡Qué feliz estoy!_
+୨୧ ꒱  */hug* + _<mention>_
+> _(づ｡◕‿‿◕｡)づ ¡Abrazo!_
+୨୧ ꒱  */impregnate › /preg* + _<mention>_
+> _(ง ื▿ ื)ว ¡Ups!_
+୨୧ ꒱  */kill* + _<mention>_
+> _(｡>_<｡) ¡Te mato! (en el juego)_
+୨୧ ꒱  */kiss › /besar › /kiss2* + _<mention>_
+> _( ´ kiss \` ) ¡Besito!_
+୨୧ ꒱  */laugh* + _<mention>_
+> _ꉂ(ˊᗜˋ*) ¡Jajaja!_
+୨୧ ꒱  */lick* + _<mention>_
+> _(っ◔﹏◔)っ Lamiendo!_
+୨୧ ꒱  */love › /amor* + _<mention>_
+> _(｡･ω･｡)ﾉ♡ ¡Te quiero!_
+୨୧ ꒱  */pat* + _<mention>_
+> _(っ´ω\`)ﾉ(╥ω╥) Palmadita_
+୨୧ ꒱  */poke* + _<mention>_
+> _👉 Poke!_
+୨୧ ꒱  */pout* + _<mention>_
+> _(｡>_<｡) Haciendo pucheros_
+୨୧ ꒱  */punch* + _<mention>_
+> _👊 Puñetazo!_
+୨୧ ꒱  */run* + _<mention>_
+> _ε=ε=┌(;￣▽￣)┘ ¡A correr!_
+୨୧ ꒱  */sad › /triste* + _<mention>_
+> _(｡•́ _ •̀｡) Estoy triste_
+୨୧ ꒱  */scared* + _<mention>_
+> _(>_<) ¡Qué miedo!_
+୨୧ ꒱  */seduce* + _<mention>_
+> _( ͡° ͜ʖ ͡°) ... seduciendo_
+୨୧ ꒱  */shy › /timido* + _<mention>_
+> _(⁄ ⁄•⁄ω⁄•⁄ ⁄) Qué tímido/a_
+୨୧ ꒱  */slap* + _<mention>_
+> _👋 Bofetada!_
+୨୧ ꒱  */dias › /days* + _<mention>_
+> _☀️ ¡Buenos días!_
+୨୧ ꒱  */noches › /nights* + _<mention>_
+> _🌙 ¡Buenas noches!_
+୨୧ ꒱  */sleep* + _<mention>_
+> _(๑˘ ˘ sleepy) A dormir..._
+୨୧ ꒱  */smoke* + _<mention>_
+> _🚬 Fumando..._
+୨୧ ꒱  */think* + _<mention>_
+> _🤔 Pensando..._
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *NSFW* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */anal* + _<mention>_
-> _*Hacer un anal a un usuario.*_
-┃❀ᩧ̼ ❫❯ */waifu*
-> _*Buscá una waifu aleatorio.*_
-┃✿ᩧ̼ ❫❯ */bath* + _<mention>_
-> _*Bañarse solo o con un usuario.*_
-┃❀ᩧ̼ ❫❯ */blowjob › /mamada › /bj* + _<mention>_
-> _*Dar una mamada a un usuario.*_
-┃✿ᩧ̼ ❫❯ */boobjob* + _<mention>_
-> _*Hacer una rusa a un usuario.*_
-┃❀ᩧ̼ ❫❯ */cum* + _<mention>_
-> _*Venirse en un usuario.*_
-┃✿ᩧ̼ ❫❯ */fap* + _<mention>_
-> _*Hacerse una paja solo o con un usuario.*_
-┃❀ᩧ̼ ❫❯ */ppcouple › /ppcp*
-> _*Genera imagenes para amistades o parejas.*_
-┃✿ᩧ̼ ❫❯ */footjob* + _<mention>_
-> _*Hacer una paja con los pies a un usuario.*_
-┃❀ᩧ̼ ❫❯ */fuck › /coger › /fuck2* + _<mention>_
-> _*Follarte a un usuario.*_
-┃✿ᩧ̼ ❫❯ */cafe › /coffe* + _<mention>_
-> _*Tomate un cafecito solo o con un usuario.*_
-┃❀ᩧ̼ ❫❯ */violar › /perra* + _<mention>_
-> _*Viola a un usuario.*_
-┃✿ᩧ̼ ❫❯ */grabboobs* + _<mention>_
-> _*Agarrar tetas a un usuario.*_
-┃❀ᩧ̼ ❫❯ */grope* + _<mention>_
-> _*Manosear a un usuario.*_
-┃✿ᩧ̼ ❫❯ */lickpussy* + _<mention>_
-> _*Lamer un coño de un usuario.*_
-┃❀ᩧ̼ ❫❯ */rule34 › /r34* + _<tag>_
-> _*Buscar imagenes en Rule34*_
-┃✿ᩧ̼ ❫❯ */sixnine › /69* + _<mention>_
-> _*Haz un 69 con un usuario.*_
-┃❀ᩧ̼ ❫❯ */spank › /nalgada* + _<mention>_
-> _*Dar una nalgada a un usuario.*_
-┃✿ᩧ̼ ❫❯ */suckboobs* + _<mention>_
-> _*Chupar tetas a un usuario.*_
-┃❀ᩧ̼ ❫❯ */undress › /encuerar* + _<mention>_
-> _*Desnudar a un usuario.*_
-┃✿ᩧ̼ ❫❯ */yuri › /tijeras* + _<mention>_
-> _*Hacer tijeras con un usuario.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *NSFW (Solo si eres mayor 😉)* 🌷‧₊˚ ꒱
+୨୧ ꒱  */anal* + _<mention>_
+> _(*/ω＼*) Anal..._
+୨୧ ꒱  */waifu*
+> _Busca una waifu aleatoria... ( ͡° ͜ʖ ͡°)_
+୨୧ ꒱  */bath* + _<mention>_
+> _🛀 A bañarse!_
+୨୧ ꒱  */blowjob › /mamada › /bj* + _<mention>_
+> _( ͡°⁄ ⁄ ͜⁄ ⁄ʖ⁄ ⁄ ͡°) Mamada..._
+୨୧ ꒱  */boobjob* + _<mention>_
+> _(*/ω＼*) Rusa..._
+୨୧ ꒱  */cum* + _<mention>_
+> _(っ´Ι\`)っ ... viniéndose_
+୨୧ ꒱  */fap* + _<mention>_
+> _( ͡° ͜ʖ ͡°) Haciéndose una paja..._
+୨୧ ꒱  */ppcouple › /ppcp*
+> _Fotos para parejas o amigos!_
+୨୧ ꒱  */footjob* + _<mention>_
+> _(*/ω＼*) Paja con los pies..._
+୨୧ ꒱  */fuck › /coger › /fuck2* + _<mention>_
+> _( ͡° ͜ʖ ͡°) Follarte..._
+୨୧ ꒱  */cafe › /coffe* + _<mention>_
+> _☕ Un cafecito?_
+୨୧ ꒱  */violar › /perra* + _<mention>_
+> _(｀ з´) ¡Te violo! (en el juego)_
+୨୧ ꒱  */grabboobs* + _<mention>_
+> _(っ grab boobs \` ) Agarrando..._
+୨୧ ꒱  */grope* + _<mention>_
+> _( ͡° ͜ʖ ͡°) Manoseando..._
+୨୧ ꒱  */lickpussy* + _<mention>_
+> _(っ lick pussy \` ) Lamiendo..._
+୨୧ ꒱  */rule34 › /r34* + _<tag>_
+> _(⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄) Busca imágenes en Rule34_
+୨୧ ꒱  */sixnine › /69* + _<mention>_
+> _( ͡° ͜ʖ ͡°) Haciendo un 69..._
+୨୧ ꒱  */spank › /nalgada* + _<mention>_
+> _🍑 Nalgada!_
+୨୧ ꒱  */suckboobs* + _<mention>_
+> _(っ suck boobs \` ) Chupando..._
+୨୧ ꒱  */undress › /encuerar* + _<mention>_
+> _(*/ω＼*) Desnudando..._
+୨୧ ꒱  */yuri › /tijeras* + _<mention>_
+> _( ͡° ͜ʖ ͡°) Tijeras..._
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-╭ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─͜  𓇼 *JUEGOS* 𓇼̼ᩘ  ִ.
-┃✿ᩧ̼ ❫❯ */amistad › /amigorandom*
-> _*Hacer amigos con un juego.*_
-┃❀ᩧ̼ ❫❯ */chaqueta › /jalamela* + _<mention>_
-> _*Hacerte una chaqueta o a un usuario.*_
-┃✿ᩧ̼ ❫❯ */chiste*
-> _*La bot te cuenta un chiste.*_
-┃❀ᩧ̼ ❫❯ */consejo*
-> _*La bot te da un consejo.*_
-┃✿ᩧ̼ ❫❯ */doxeo › /doxear* + _<mention>_
-> _*Simular un doxeo falso a un usuario.*_
-┃❀ᩧ̼ ❫❯ */facto*
-> _*La bot te lanza un facto.*_
-┃✿ᩧ̼ ❫❯ */formarpareja*
-> _*Forma una pareja aleatoria.*_
-┃❀ᩧ̼ ❫❯ */formarpareja5*
-> _*Forma 5 parejas diferentes aleatorias.*_
-┃✿ᩧ̼ ❫❯ */frase*
-> _*La bot te da una frase.*_
-┃❀ᩧ̼ ❫❯ */huevo* + _<mention>_
-> _*Agarrale el huevo a alguien.*_
-┃✿ᩧ̼ ❫❯ */chupalo* + _<mention>_
-> _*Hacer que un usuario te la chupe.*_
-┃❀ᩧ̼ ❫❯ */aplauso* + _<mention>_
-> _*Aplaudirle a alguien.*_
-┃✿ᩧ̼ ❫❯ */marron* + _<mention>_
-> _*Burlarte del color de piel de un usuario.*_
-┃❀ᩧ̼ ❫❯ */suicidar*
-> _*Suicidate (es un juego).*_
-┃✿ᩧ̼ ❫❯ */iq › /iqtest* + _<mention>_
-> _*Calcular el iq de alguna persona.*_
-┃❀ᩧ̼ ❫❯ */meme*
-> _*La bot te envía un meme aleatorio.*_
-┃✿ᩧ̼ ❫❯ */morse* + _<text>_
-> _*Convierte un texto a codigo morse.*_
-┃❀ᩧ̼ ❫❯ */nombreninja*
-> _*Busca un nombre ninja aleatorio.*_
-┃✿ᩧ̼ ❫❯ */paja › /pajeame* + _<mention>_
-> _*La bot te hace una paja o a un usuario.*_
-┃❀ᩧ̼ ❫❯ */personalidad* + _<mention>_
-> _*La bot busca tu personalidad o la de un usuario.*_
-┃✿ᩧ̼ ❫❯ */piropo*
-> _*Lanza un piropo.*_
-┃❀ᩧ̼ ❫❯ */pregunta* + _<pregunta>_
-> _*Hazle una pregunta a la bot.*_
-┃✿ᩧ̼ ❫❯ */ship › /pareja* + _<mention>_
-> _*La bot te da la probabilidad de enamorarte de una persona.*_
-┃❀ᩧ̼ ❫❯ */sorteo*
-> _*Empieza un sorteo.*_
-┃✿ᩧ̼ ❫❯ */top* + _<cantidad>_
-> _*Empieza un top de personas.*_
-┃❀ᩧ̼ ❫❯ */formartrio* + _<mention1> <mention2>_
-> _*Forma un trio aleatorio.*_
-┃✿ᩧ̼ ❫❯ */ahorcado*
-> _*Diviertete con la bot jugando el juego ahorcado.*_
-┃❀ᩧ̼ ❫❯ */mates › /matematicas*
-> _*Responde las preguntas de matemáticas para ganar recompensas.*_
-┃✿ᩧ̼ ❫❯ */ppt* + _<piedra|papel|tijera>_
-> _*Juega piedra papel o tijeras con la bot.*_
-┃❀ᩧ̼ ❫❯ */sopa › /buscarpalabra*
-> _*Juega el famoso juego de sopa de letras.*_
-┃✿ᩧ̼ ❫❯ */pvp › /suit* + _<mention>_
-> _*Juega un pvp contra otro usuario.*_
-┃❀ᩧ̼ ❫❯ */ttt*
-> _*Crea una sala de juego Ta Te Ti.*_
-╰ׅ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴  ֢ ⋱࣭ ᩴ   ⋮֔    ᩴ ⋰ ֢ ╶͜─ׄ͜─ׄ֟፝͜─ׄ͜─ׄ͜╴╯ׅ
+꒰ ‧₊˚ ☁️ *JUEGOS Divertidos* 🌷‧₊˚ ꒱
+୨୧ ꒱  */amistad › /amigorandom*
+> _Haz amigos con un juego! 🥰_
+୨୧ ꒱  */chaqueta › /jalamela* + _<mention>_
+> _(*/ω＼*) ... eso..._
+୨୧ ꒱  */chiste*
+> _Te cuento un chiste para que rías! 😂_
+୨୧ ꒱  */consejo*
+> _Un consejito para ti ✨_
+୨୧ ꒱  */doxeo › /doxear* + _<mention>_
+> _(눈_눈) Doxeo falso!_
+୨୧ ꒱  */facto*
+> _Un dato interesante!_
+୨୧ ꒱  */formarpareja*
+> _Encuentra tu pareja ideal (del juego)!_
+୨୧ ꒱  */formarpareja5*
+> _5 parejas al azar!_
+୨୧ ꒱  */frase*
+> _Una frase bonita para ti_
+୨୧ ꒱  */huevo* + _<mention>_
+> _🥚 Agarra el huevo de alguien!_
+୨୧ ꒱  */chupalo* + _<mention>_
+> _( ͡° ͜ʖ ͡°) Haz que te la chupe..._
+୨୧ ꒱  */aplauso* + _<mention>_
+> _👏 ¡Aplausos para ti!_
+୨୧ ꒱  */marron* + _<mention>_
+> _(¬_¬ ) Burlándome del color de piel..._
+୨୧ ꒱  */suicidar*
+> _(｡>ㅅ<｡) Suicidate... (en el juego)_
+୨୧ ꒱  */iq › /iqtest* + _<mention>_
+> _Calcula el IQ de alguien_
+୨୧ ꒱  */meme*
+> _Un meme para hacerte reír!_
+୨୧ ꒱  */morse* + _<text>_
+> _Traduce texto a código morse_
+୨୧ ꒱  */nombreninja*
+> _Un nombre ninja genial para ti!_
+୨୧ ꒱  */paja › /pajeame* + _<mention>_
+> _(*/ω＼*) Te hago una paja..._
+୨୧ ꒱  */personalidad* + _<mention>_
+> _Descubre tu personalidad!_
+୨୧ ꒱  */piropo*
+> _Un piropo para alegrarte el día!_
+୨୧ ꒱  */pregunta* + _<pregunta>_
+> _Pregúntame lo que quieras!_
+୨୧ ꒱  */ship › /pareja* + _<mention>_
+> _¿Hay amor entre ustedes? ❤️_
+୨୧ ꒱  */sorteo*
+> _¡Empezamos un sorteo!_
+୨୧ ꒱  */top* + _<cantidad>_
+> _Un top de personas!_
+୨୧ ꒱  */formartrio* + _<mention1> <mention2>_
+> _Forma un trio al azar_
+୨୧ ꒱  */ahorcado*
+> _Juega al ahorcado conmigo!_
+୨୧ ꒱  */mates › /matematicas*
+> _Demuestra lo bueno que eres en mates!_
+୨୧ ꒱  */ppt* + _<piedra|papel|tijera>_
+> _Piedra, papel o tijeras conmigo!_
+୨୧ ꒱  */sopa › /buscarpalabra*
+> _A buscar palabras! 🔎_
+୨୧ ꒱  */pvp › /suit* + _<mention>_
+> _Un duelo contra otro usuario!_
+୨୧ ꒱  */ttt*
+> _Juega Ta Te Ti!_
+╰ ─ ─ ─ ─ ୨ ♡ ୧ ─ ─ ─ ─ ╯
 
-©  Made ᑲᥡ wirk ✌︎
+©  Hecho con 💖 por wirk ✌︎
     `.trim()
 
   await conn.sendMessage(m.chat, { 
