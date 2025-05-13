@@ -48,7 +48,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
           body: "✏ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄 ☃︎",
           mediaType: 2,
           previewType: 0,
-          mediaUrl: url,
+          mediaUrl: "https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd",
           sourceUrl: url,
           thumbnail: thumb,
           renderLargerThumbnail: true,
