@@ -27,7 +27,7 @@ const handler = async (m, {args, usedPrefix, command}) => {
     }
   }
 };
-handler.command = ['translate','traducir','trad'];
+handler.command = ['translate','df','trad'];
 handler.register = true
 handler.rowner = true
 export default handler;
