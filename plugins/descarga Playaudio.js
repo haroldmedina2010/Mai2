@@ -69,7 +69,7 @@ author = author || 'no encontrado'
         const json = await response.json()
         await conn.sendFile(m.chat, json.data.url, json.title + '.mp4', title, m)
       } catch (e) {
-        return conn.reply(m.chat, '⚠︎ No se pudo enviar el video. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente más tarde.', m)
+        return conn.reply(m.chat, '⚠️ No fue posible enviar el video. Es posible que el archivo exceda el tamaño permitido o que haya ocurrido un error al generar el enlace de descarga. Te recomendamos intentarlo nuevamente más tarde.', m)
       }
     } else {
       return conn.reply(m.chat, '✧︎ Comando no reconocido.', m)
@@ -78,7 +78,7 @@ author = author || 'no encontrado'
     return m.reply(`⚠︎ Ocurrió un error: ${error}`)
   }
 }
-handler.command = handler.help = ['play', 'mp3', 'ytmp3', 'playaudio']
+handler.command = handler.help = ['play', 'mp3', 'ytmp3', 'playaudio', 'ytmp4']
 handler.tags = ['descargas']
 handler.group = false
 
