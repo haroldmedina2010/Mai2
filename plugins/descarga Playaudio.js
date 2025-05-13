@@ -1,84 +1,118 @@
-import fetch from 'node-fetch';
+import fetch from "node-fetch"; 
+import yts from 'yt-search'; 
+import axios from "axios";
 
-let handler = async (m, { conn, usedPrefix, command, text }) => {
-  if (!text) return m.reply(`✨ Ingresa un nombre para buscar en YouTube.\n\nEjemplo: *${usedPrefix + command} Shakira - Acróstico*`);
-
-  try {
-    await m.react("🕛");
-
-    // Buscar video
-    const searchRes = await fetch(`https://delirius-apiofc.vercel.app/search/ytsearch?q=${encodeURIComponent(text)}`);
-    const searchJson = await searchRes.json();
-    const video = searchJson?.data?.[0];
-    if (!video) {
-      await m.react("❌");
-      return m.reply(`❌ No encontré resultados en YouTube para: *"${text}"*`);
+const handler = async (m, { conn, text, usedPrefix, command }) => {
+  try { 
+    if (!text.trim()) { 
+      return conn.reply(m.chat, '✧ Ingresa el nombre de la música a descargar.', m); 
     }
 
-    const ytUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
+    const search = await yts(text);
+    if (!search.all || search.all.length === 0) {
+      return m.reply('No se encontraron resultados para tu búsqueda.');
+    }
 
-    // Mostrar información con imagen
-    await conn.sendMessage(m.chat, {
-      image: { url: video.image },
-      caption: `
-✦.──『 *YouTube Play* 』──.✦
+    const videoInfo = search.all[0];
+    if (!videoInfo) {
+      return m.reply('No se pudo obtener información del video.');
+    }
 
-𔖲𔖮𔖭 *Nombre:* ${video.title}
-𔖲𔖮𔖭 *Autor:* ${video.author.name}
-𔖲𔖮𔖭 *Duración:* ${video.duration}
-𔖲𔖮𔖭 *Vistas:* ${video.views}
-𔖲𔖮𔖭 *Url:* ${ytUrl}
+    const { title, thumbnail, timestamp, views, ago, url, author } = videoInfo;
 
-☕ *Made By Wirk*
-`.trim(),
+    if (!title || !thumbnail || !timestamp || !views || !ago || !url || !author) {
+      return m.reply('Información incompleta del video.');
+    }
+
+    const vistas = formatViews(views);
+    const canal = author.name ? author.name : 'Desconocido';
+
+    const infoMessage = `
+     ╭⋆⋆⋆⋆𖹭🍓 *𝖬𝖺𝗂 𝖣𝖫* 🍓𖦹⋆⋆⋆⋆╮
+
+    > 🌻 *Título:* ${title || 'Desconocido'} 
+    > 🕛 *Duración:* ${timestamp || 'Desconocido'} 
+    > 🍟 *Vistas:* ${vistas || 'Desconocido'} 
+    > 🪴 *Canal:* ${canal}
+    > 💣 *Publicado:* ${ago || 'Desconocido'}
+
+    ☕︎︎ *_𝖬𝖺𝖽𝖾 𝖡𝗒 𝖶𝗂𝗋𝗄_*
+    `;
+
+    const thumb = (await conn.getFile(thumbnail))?.data;
+
+    const JT = {
       contextInfo: {
-        forwardingScore: 0,
-        isForwarded: true,
         externalAdReply: {
-          title: "☕ Mai Bot 🪴",
-          body: "💚 Dev 𝖡𝗒 𝖶𝗂𝗋𝗄 🌺",
-          thumbnailUrl: video.image,
-          mediaUrl: "https://chat.whatsapp.com/KqkJwla1aq1LgaPiuFFtEY",
+          title: botname,
+          body: "✏ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄 ☃︎,
           mediaType: 2,
-          showAdAttribution: true,
-          renderLargerThumbnail: true
-        }
-      }
-    }, { quoted: m });
+          previewType: 0,
+          mediaUrl: "https://chat.whatsapp.com/KqkJwla1aq1LgaPiuFFtEY",
+          sourceUrl: url,
+          thumbnail: thumb,
+          renderLargerThumbnail: true,
+        },
+      },
+    };
 
-    // Descargar audio con nueva API
-    const dlRes = await fetch(`https://api.vreden.my.id/api/ytmp3?url=${encodeURIComponent(ytUrl)}`);
-    const dlJson = await dlRes.json();
+    await conn.reply(m.chat, infoMessage, m, JT);
 
-    const audioUrl = dlJson?.result?.download?.url || dlJson?.result?.url;
-    if (!audioUrl) {
-      await m.react("❌");
-      return m.reply("❌ No se pudo obtener el enlace del audio.");
+    if (command === 'play' || command === 'mp3' || command === 'playaudio') { 
+      try { 
+        const api = await (await fetch(`https://api.vreden.my.id/api/ytmp3?url=${url}`)).json(); 
+        const resulta = api.result; 
+        const result = resulta.download.url;
+
+        if (!result) throw new Error('El enlace de audio no se generó correctamente.');
+
+        await conn.sendMessage(m.chat, { audio: { url: result }, fileName: `${api.result.title}.mp3`, mimetype: 'audio/mpeg', ptt: true }, { quoted: m });
+
+      } catch (e) { 
+        console.error('Error al enviar el audio:', e.message); 
+        return conn.reply(m.chat, '> ⚠️︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL, o tambien puede ser error de la api ALV.', m); 
+      } 
+    } else if (command === 'play2' || command === 'mp4' || command === 'playvideo') { 
+      try { 
+        const response = await fetch(`https://api.vreden.my.id/api/ytmp4?url=${url}`); 
+        const json = await response.json(); 
+        const resultad = json.result; 
+        const resultado = resultad.download.url;
+
+        if (!resultad || !resultado) throw new Error('El enlace de video no se generó correctamente.');
+
+        await conn.sendMessage(m.chat, { video: { url: resultado }, fileName: resultad.title, mimetype: 'video/mp4', caption: dev }, { quoted: m });
+
+      } catch (e) { 
+        console.error('Error al enviar el video:', e.message); 
+        return conn.reply(m.chat, '⚠️︎ No se pudo enviar el video. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL, o tambien puede ser error de la api ALV.', m); 
+      } 
+    } else { 
+      return conn.reply(m.chat, '⚠︎ Comando no reconocido.', m); 
     }
 
-    // Enviar el audio rápido como PTT
-    await conn.sendMessage(m.chat, {
-      audio: { url: audioUrl },
-      mimetype: 'audio/mpeg',
-      ptt: true,
-      fileName: `🎵 ${video.title}.mp3`,
-      contextInfo: {
-        forwardingScore: 0,
-        isForwarded: true
-      }
-    }, { quoted: m });
-
-    await m.react("✅");
-
-  } catch (e) {
-    console.error(e);
-    await m.react("❌");
-    return m.reply(`❌ Error al procesar tu solicitud:\n${e.message}`);
-  }
+  } catch (error) { 
+    return m.reply(`︎🦥 *Ocurrió un error:* ${error}`);
+  } 
 };
 
-handler.command = ['play', 'playaudio', 'mp3'];
-handler.help = ['play <texto>'];
-handler.tags = ['media'];
+handler.command = handler.help = ['play', 'mp3', 'playaudio']; 
+handler.tags = ['downloader'];
 
 export default handler;
+
+function formatViews(views) { 
+  if (views === undefined) { 
+    return "No disponible"; 
+  }
+
+  if (views >= 1_000_000_000) { 
+    return `${(views / 1_000_000_000).toFixed(1)}B (${views.toLocaleString()})`; 
+  } else if (views >= 1_000_000) { 
+    return `${(views / 1_000_000).toFixed(1)}M (${views.toLocaleString()})`; 
+  } else if (views >= 1_000) { 
+    return `${(views / 1_000).toFixed(1)}k (${views.toLocaleString()})`; 
+  } 
+
+  return views.toString(); 
+}
