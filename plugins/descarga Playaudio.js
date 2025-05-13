@@ -4,7 +4,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
   if (!text) return m.reply(`✨ Ingresa un nombre para buscar en YouTube.\n\nEjemplo: *${usedPrefix + command} Shakira - Acróstico*`);
 
   try {
-    await m.react("🔍");
+    await m.react("🕛");
 
     // Buscar video
     const searchRes = await fetch(`https://delirius-apiofc.vercel.app/search/ytsearch?q=${encodeURIComponent(text)}`);
@@ -29,11 +29,10 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 𔖲𔖮𔖭 *Vistas:* ${video.views}
 𔖲𔖮𔖭 *Url:* ${ytUrl}
 
-☁️ *Preparando tu audio...*
 ☕ *Made By Wirk*
 `.trim(),
       contextInfo: {
-        forwardingScore: 9999999,
+        forwardingScore: 0,
         isForwarded: true,
         externalAdReply: {
           title: "☕ Mai Bot 🪴",
@@ -64,7 +63,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       ptt: true,
       fileName: `🎵 ${video.title}.mp3`,
       contextInfo: {
-        forwardingScore: 999,
+        forwardingScore: 0,
         isForwarded: true
       }
     }, { quoted: m });
