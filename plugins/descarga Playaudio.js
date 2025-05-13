@@ -28,7 +28,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const canal = author.name ? author.name : 'Desconocido';
 
     const infoMessage = `
-     ╭⋆⋆⋆⋆𖹭🍓 *𝖬𝖺𝗂 𝖣𝖫* 🍓𖦹⋆⋆⋆⋆╮
+> ╭⋆⋆⋆⋆𖹭🍓 *𝖬𝖺𝗂 𝖣𝖫* 🍓𖦹⋆⋆⋆⋆╮
 
 > 🌻 *Título:* ${title || 'Desconocido'} 
 > 🕛 *Duración:* ${timestamp || 'Desconocido'} 
@@ -36,7 +36,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 > 🪴 *Canal:* ${canal}
 > 💣 *Publicado:* ${ago || 'Desconocido'}
 
-☕︎︎ *_𝖬𝖺𝖽𝖾 𝖡𝗒 𝖶𝗂𝗋𝗄_*
+☕︎︎ *𝖬𝖺𝖽𝖾 𝖡𝗒 𝖶𝗂𝗋𝗄*
     `;
 
     const thumb = (await conn.getFile(thumbnail))?.data;
