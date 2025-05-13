@@ -35,14 +35,14 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const vistas = formatViews(views);
     const canal = author.name ? author.name : 'Desconocido';
 
-    const infoMessage = `╭┈┈⊰ 𝖸𝗈𝗎𝖳𝗎𝖻𝖾 ▶️ ⊱┈┈╮
+    const infoMessage = `*╭┈┈⊰ 𝖸𝗈𝗎𝖳𝗎𝖻𝖾 ▶️ ⊱┈┈╮*
 ┃ *🌸 Título:* ${title}
 ┃ *🌼 Canal:* ${canal}
 ┃ *✨ Vistas:* ${vistas}
 ┃ *⏰ Duración:* ${timestamp || 'Desconocido'}
 ┃ *🧁 Publicado:* ${ago || 'Desconocido'}
 ┃ *🔗 Enlace:* ${url}
-╰┈┈┈♡ ⚘ 𝘔𝘢𝘪 • 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄♡`;
+*╰┈┈┈♡ ⚘ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄 ♡*`;
 
     const thumb = (await conn.getFile(thumbnail))?.data;
 
