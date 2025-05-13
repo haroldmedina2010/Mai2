@@ -4,9 +4,8 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
   if (!text) return m.reply(`✨ Ingresa un nombre para buscar en YouTube.\n\nEjemplo: *${usedPrefix + command} Shakira - Acróstico*`);
 
   try {
-    await m.react("🔍"); // Reacción inicial
+    await m.react("🔍");
 
-    // Paso 1: Buscar el video
     const searchApi = `https://delirius-apiofc.vercel.app/search/ytsearch?q=${encodeURIComponent(text)}`;
     const searchResponse = await fetch(searchApi);
     const searchData = await searchResponse.json();
@@ -16,9 +15,9 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       return m.reply(`❌ No encontré resultados en YouTube para: *"${text}"*`);
     }
 
-    const video = searchData.data[0]; // Primer resultado
+    const video = searchData.data[0];
+    const videoUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
 
-    // Mensaje decorado
     const infoMessage = `
 ✦.──『 *YouTube Play* 』──.✦
 
@@ -26,19 +25,18 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 𔖲𔖮𔖭 *Autor:* ${video.author.name}
 𔖲𔖮𔖭 *Duración:* ${video.duration}
 𔖲𔖮𔖭 *Vistas:* ${video.views}
-𔖲𔖮𔖭 *Url:* ${video.url || `https://www.youtube.com/watch?v=${video.videoId}`}
+𔖲𔖮𔖭 *Url:* ${videoUrl}
 
 ☁️ *Espera un momento mientras preparo tu audio...*
 
 ☕ *Made By Wirk*
 `.trim();
 
-    // Enviar miniatura con el mensaje decorado
     await conn.sendMessage(m.chat, {
       image: { url: video.image },
       caption: infoMessage,
       contextInfo: {
-        forwardingScore: 9999999999,
+        forwardingScore: 999999999,
         isForwarded: true,
         externalAdReply: {
           title: "☕ Mai Bot 🪴",
@@ -52,28 +50,23 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       }
     }, { quoted: m });
 
-    // Paso 2: Descargar el audio
-    const downloadApi = `https://api.vreden.my.id/api/ytplaymp3?query=${encodeURIComponent(video.title)}`;
-    const downloadResponse = await fetch(downloadApi);
-    const downloadData = await downloadResponse.json();
+    // Descargar con la nueva API más rápida
+    const dlApi = `https://api.vreden.my.id/api/ytmp3?url=${encodeURIComponent(videoUrl)}`;
+    const dlRes = await fetch(dlApi);
+    const dlJson = await dlRes.json();
 
-    if (!downloadData?.result?.download?.url) {
+    if (!dlJson?.result?.url) {
       await m.react("❌");
-      if (downloadData?.result?.msg) {
-        return m.reply(`⚠️ No se pudo obtener el audio:\n${downloadData.result.msg}`);
-      }
       return m.reply("⚠️ No se pudo obtener el audio del video.");
     }
 
-    const audioUrl = downloadData.result.download.url;
-
     await conn.sendMessage(m.chat, {
-      audio: { url: audioUrl },
+      audio: { url: dlJson.result.url },
       mimetype: 'audio/mpeg',
       ptt: true,
       fileName: `🎵 ${video.title}.mp3`,
       contextInfo: {
-        forwardingScore: 999,
+        forwardingScore: 9999999,
         isForwarded: true
       }
     }, { quoted: m });
@@ -87,7 +80,6 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
   }
 };
 
-// Menú con botones para elegir entre audio o video
 handler.command = ['play', 'playaudio', 'mp3'];
 handler.help = ['play <texto>', 'playaudio <texto>'];
 handler.tags = ['media'];
