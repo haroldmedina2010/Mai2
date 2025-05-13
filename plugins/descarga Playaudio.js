@@ -5,7 +5,7 @@ import axios from "axios";
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try { 
     if (!text.trim()) { 
-      return conn.reply(m.chat, '✧ Ingresa el nombre de la música a descargar.', m); 
+      return conn.reply(m.chat, ' Ingresa el nombre de la música a descargar.', m); 
     }
 
     const search = await yts(text);
