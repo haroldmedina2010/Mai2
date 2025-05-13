@@ -43,9 +43,9 @@ author = author || 'no encontrado'
         externalAdReply: {
           title: botname,
           body: dev,
-          mediaType: 3,
+          mediaType: 1,
           previewType: 0,
-          mediaUrl: "https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd",
+          mediaUrl: url,
           sourceUrl: "https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd",
           thumbnail: thumb,
           renderLargerThumbnail: true,
@@ -59,7 +59,7 @@ author = author || 'no encontrado'
         const resulta = api.result
         const result = resulta.download.url    
         if (!result) throw new Error('⚠ El enlace de audio no se generó correctamente.')
-        await conn.sendMessage(m.chat, { audio: { url: result }, fileName: `${api.result.title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
+        await conn.sendMessage(m.chat, { audio: { url: result }, fileName: `${api.result.title}.mp3`, mimetype: 'audio/mpeg', ptt: true }, { quoted: m })
       } catch (e) {
         return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL o de la api tmb. Por favor, intenta nuevamente más tarde ALV', m)
       }
