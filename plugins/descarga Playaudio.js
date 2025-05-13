@@ -6,37 +6,34 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
   try {
     await m.react("🔍");
 
-    const searchApi = `https://delirius-apiofc.vercel.app/search/ytsearch?q=${encodeURIComponent(text)}`;
-    const searchResponse = await fetch(searchApi);
-    const searchData = await searchResponse.json();
-
-    if (!searchData?.data || searchData.data.length === 0) {
+    // Buscar video
+    const searchRes = await fetch(`https://delirius-apiofc.vercel.app/search/ytsearch?q=${encodeURIComponent(text)}`);
+    const searchJson = await searchRes.json();
+    const video = searchJson?.data?.[0];
+    if (!video) {
       await m.react("❌");
       return m.reply(`❌ No encontré resultados en YouTube para: *"${text}"*`);
     }
 
-    const video = searchData.data[0];
-    const videoUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
+    const ytUrl = `https://www.youtube.com/watch?v=${video.videoId}`;
 
-    const infoMessage = `
+    // Mostrar información con imagen
+    await conn.sendMessage(m.chat, {
+      image: { url: video.image },
+      caption: `
 ✦.──『 *YouTube Play* 』──.✦
 
 𔖲𔖮𔖭 *Nombre:* ${video.title}
 𔖲𔖮𔖭 *Autor:* ${video.author.name}
 𔖲𔖮𔖭 *Duración:* ${video.duration}
 𔖲𔖮𔖭 *Vistas:* ${video.views}
-𔖲𔖮𔖭 *Url:* ${videoUrl}
+𔖲𔖮𔖭 *Url:* ${ytUrl}
 
-☁️ *Espera un momento mientras preparo tu audio...*
-
+☁️ *Preparando tu audio...*
 ☕ *Made By Wirk*
-`.trim();
-
-    await conn.sendMessage(m.chat, {
-      image: { url: video.image },
-      caption: infoMessage,
+`.trim(),
       contextInfo: {
-        forwardingScore: 999999999,
+        forwardingScore: 9999999,
         isForwarded: true,
         externalAdReply: {
           title: "☕ Mai Bot 🪴",
@@ -50,38 +47,39 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
       }
     }, { quoted: m });
 
-    // Descargar con la nueva API más rápida
-    const dlApi = `https://api.vreden.my.id/api/ytmp3?url=${encodeURIComponent(videoUrl)}`;
-    const dlRes = await fetch(dlApi);
+    // Descargar audio con nueva API
+    const dlRes = await fetch(`https://api.vreden.my.id/api/ytmp3?url=${encodeURIComponent(ytUrl)}`);
     const dlJson = await dlRes.json();
 
-    if (!dlJson?.result?.url) {
+    const audioUrl = dlJson?.result?.download?.url || dlJson?.result?.url;
+    if (!audioUrl) {
       await m.react("❌");
-      return m.reply("⚠️ No se pudo obtener el audio del video.");
+      return m.reply("❌ No se pudo obtener el enlace del audio.");
     }
 
+    // Enviar el audio rápido como PTT
     await conn.sendMessage(m.chat, {
-      audio: { url: dlJson.result.url },
+      audio: { url: audioUrl },
       mimetype: 'audio/mpeg',
       ptt: true,
       fileName: `🎵 ${video.title}.mp3`,
       contextInfo: {
-        forwardingScore: 9999999,
+        forwardingScore: 999,
         isForwarded: true
       }
     }, { quoted: m });
 
     await m.react("✅");
 
-  } catch (error) {
-    console.error(error);
+  } catch (e) {
+    console.error(e);
     await m.react("❌");
-    return m.reply(`❌ Error al procesar tu solicitud:\n${error.message}`);
+    return m.reply(`❌ Error al procesar tu solicitud:\n${e.message}`);
   }
 };
 
 handler.command = ['play', 'playaudio', 'mp3'];
-handler.help = ['play <texto>', 'playaudio <texto>'];
+handler.help = ['play <texto>'];
 handler.tags = ['media'];
 
 export default handler;
