@@ -30,13 +30,13 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const infoMessage = `
      ╭⋆⋆⋆⋆𖹭🍓 *𝖬𝖺𝗂 𝖣𝖫* 🍓𖦹⋆⋆⋆⋆╮
 
-    > 🌻 *Título:* ${title || 'Desconocido'} 
-    > 🕛 *Duración:* ${timestamp || 'Desconocido'} 
-    > 🍟 *Vistas:* ${vistas || 'Desconocido'} 
-    > 🪴 *Canal:* ${canal}
-    > 💣 *Publicado:* ${ago || 'Desconocido'}
+> 🌻 *Título:* ${title || 'Desconocido'} 
+> 🕛 *Duración:* ${timestamp || 'Desconocido'} 
+> 🍟 *Vistas:* ${vistas || 'Desconocido'} 
+> 🪴 *Canal:* ${canal}
+> 💣 *Publicado:* ${ago || 'Desconocido'}
 
-    ☕︎︎ *_𝖬𝖺𝖽𝖾 𝖡𝗒 𝖶𝗂𝗋𝗄_*
+☕︎︎ *_𝖬𝖺𝖽𝖾 𝖡𝗒 𝖶𝗂𝗋𝗄_*
     `;
 
     const thumb = (await conn.getFile(thumbnail))?.data;
@@ -48,7 +48,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
           body: "✏ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄 ☃︎",
           mediaType: 1,
           previewType: 0,
-          mediaUrl: "https://chat.whatsapp.com/KqkJwla1aq1LgaPiuFFtEY",
+          mediaUrl: url,
           sourceUrl: url,
           thumbnail: thumb,
           renderLargerThumbnail: true,
