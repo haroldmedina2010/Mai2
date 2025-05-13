@@ -96,7 +96,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   } 
 };
 
-handler.command = handler.help = ['play', 'mp3', 'playaudio']; 
+handler.command = handler.help = ['play', 'mp3', 'playadio']; 
 handler.tags = ['downloader'];
 
 export default handler;
