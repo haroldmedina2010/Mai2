@@ -39,8 +39,8 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 ┃ *🌸 Título:* ${title}
 ┃ *🌼 Canal:* ${canal}
 ┃ *✨ Vistas:* ${vistas}
-┃ *⏰ Duración:* ${timestamp || 'Desconocido'}
-┃ *🧁 Publicado:* ${ago || 'Desconocido'}
+┃ *⏰ Duración:* ${timestamp}
+┃ *🧁 Publicado:* ${ago}
 ┃ *🔗 Enlace:* ${url}
 *╰┈┈┈♡ ⚘ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄 ♡*`;
 
@@ -66,8 +66,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     if (command === 'play' || command === 'mp3' || command === 'ytmp3' || command === 'playaudio') {
       try {
         const api = await (await fetch(`https://api.vreden.my.id/api/ytmp3?url=${url}`)).json();
-        const resulta = api.result;
-        const result = resulta.download.url;
+        const result = api.result.download.url;
 
         if (!result) throw new Error('⚠ El enlace de audio no se generó correctamente.');
 
@@ -78,15 +77,17 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
           ptt: true
         }, { quoted: m });
       } catch (e) {
-        return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL o de la API. Por favor, intenta nuevamente más tarde.', m);
+        return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Intenta más tarde.', m);
       }
     } else if (command === 'play2' || command === 'ytv' || command === 'ytmp4' || command === 'mp4') {
       try {
-        const response = await fetch(`https://api.neoxr.eu/api/youtube?url=${url}&type=video&quality=480p&apikey=GataDios`);
-        const json = await response.json();
-        await conn.sendFile(m.chat, json.data.url, `${json.title}.mp4`, title, m);
+        const res = await fetch(`https://api.siputzx.my.id/api/d/ytmp4?url=${url}`);
+        const json = await res.json();
+        if (!json || !json.result?.url) throw new Error('Error en la API de video');
+
+        await conn.sendFile(m.chat, json.result.url, `${title}.mp4`, title, m);
       } catch (e) {
-        return conn.reply(m.chat, '⚠️ No fue posible enviar el video. Es posible que el archivo exceda el tamaño permitido o que haya ocurrido un error al generar el enlace de descarga. Te recomendamos intentarlo nuevamente más tarde.', m);
+        return conn.reply(m.chat, '⚠️ No fue posible enviar el video. Intenta más tarde.', m);
       }
     } else {
       return conn.reply(m.chat, '✧︎ Comando no reconocido.', m);
@@ -103,16 +104,9 @@ handler.group = false;
 export default handler;
 
 function formatViews(views) {
-  if (views === undefined) {
-    return "No disponible";
-  }
-
-  if (views >= 1_000_000_000) {
-    return `${(views / 1_000_000_000).toFixed(1)}B (${views.toLocaleString()})`;
-  } else if (views >= 1_000_000) {
-    return `${(views / 1_000_000).toFixed(1)}M (${views.toLocaleString()})`;
-  } else if (views >= 1_000) {
-    return `${(views / 1_000).toFixed(1)}k (${views.toLocaleString()})`;
-  }
+  if (views === undefined) return "No disponible";
+  if (views >= 1_000_000_000) return `${(views / 1_000_000_000).toFixed(1)}B (${views.toLocaleString()})`;
+  if (views >= 1_000_000) return `${(views / 1_000_000).toFixed(1)}M (${views.toLocaleString()})`;
+  if (views >= 1_000) return `${(views / 1_000).toFixed(1)}k (${views.toLocaleString()})`;
   return views.toString();
 }
