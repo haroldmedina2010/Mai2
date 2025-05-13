@@ -31,11 +31,12 @@ author = author || 'no encontrado'
     const vistas = formatViews(views)
     const canal = author.name ? author.name : 'Desconocido'
     const infoMessage = `「⌦」Descargando: *<${title || 'Desconocido'}>*\n\n
-> 🧾 *Canal:* ${canal}\n
+> 🍁 *Canal:* ${canal}\n
 > ☁️ *Vistas:* ${vistas || 'Desconocido'}\n
-> ⌚ *Duración:* ${timestamp || 'Desconocido'}\n
+> 🕛 *Duración:* ${timestamp || 'Desconocido'}\n
 > 🗓️ *Publicado:* ${ago || 'Desconocido'}\n
-> 🌐 *Enlace:* ${url}`
+> 🫆 *Enlace:* ${url}\n
+*Made with Wirk ☕*`
     const thumb = (await conn.getFile(thumbnail))?.data
     const JT = {
       contextInfo: {
