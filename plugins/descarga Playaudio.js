@@ -45,7 +45,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       contextInfo: {
         externalAdReply: {
           title: botname,
-          body: "✏ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄 ☃︎,
+          body: "✏ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄 ☃︎",
           mediaType: 2,
           previewType: 0,
           mediaUrl: "https://chat.whatsapp.com/KqkJwla1aq1LgaPiuFFtEY",
