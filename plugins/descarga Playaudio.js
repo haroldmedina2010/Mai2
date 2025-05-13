@@ -28,8 +28,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const canal = author.name ? author.name : 'Desconocido';
 
     const infoMessage = `
- *╭⋆⋆⋆⋆𖹭🍓 𝖬𝖺𝗂 𝖣𝖫 🍓𖦹⋆⋆⋆⋆╮*
-
  🌻 *Título:* ${title || 'Desconocido'} 
  🕛 *Duración:* ${timestamp || 'Desconocido'} 
  🍟 *Vistas:* ${vistas || 'Desconocido'} 
@@ -50,8 +48,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
           previewType: 0,
           mediaUrl: "https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd",
           sourceUrl: url,
-          thumbnail: thumb,
-          renderLargerThumbnail: true,
         },
       },
     };
