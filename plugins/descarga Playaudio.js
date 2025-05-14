@@ -78,7 +78,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       }
     } else if (['play2', 'ytv', 'ytmp4', 'mp4'].includes(command)) {
       try {
-        const response = await fetch(`https://api.siputzx.my.id/api/d/ytmp4?url=${url}`);
+        const response = await fetch(`https://delirius-apiofc.vercel.app/download/ytmp4?url=${url}`);
         const json = await response.json();
 
         await conn.sendFile(m.chat, json.data.url, `${json.title}.mp4`, title, m);
