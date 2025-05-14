@@ -17,15 +17,7 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     let limit = 10485760;
     let size = await getSize(json.url);
 
-    const cap = `╭⋟───────────────╮
-│ 🌷  𝙑𝙞𝙙𝙚𝙤 𝙡𝙞𝙨𝙩𝙤 𝙥𝙖𝙧𝙖 𝙩𝙞 🌷
-╰⋞───────────────╯
-
-🍡 *Título:* ${json.title}
-🍥 *Tamaño:* ${await formatSize(size) || "Desconocido"}
-🪷 *Enlace:* ${args[0]}
-
-💮 Enviado por *Mai* 💛`;
+    const cap = `${json.title}`;
 
     await conn.sendFile(
       m.chat,
