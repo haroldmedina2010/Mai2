@@ -1,122 +1,109 @@
-
 import fetch from "node-fetch";
-import yts from 'yt-search';
+import yts from "yt-search";
 import axios from "axios";
 
-const youtubeRegexID = /(?:youtu.be/|youtube.com/(?:watch?v=|embed/))([a-zA-Z0-9_-]{11})/;
+const youtubeRegexID = /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([a-zA-Z0-9_-]{11})/;
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-try {
-if (!text.trim()) {
-return conn.reply(m.chat, 'Por favor, ingresa el nombre de la música a descargar.', m);
-}
+  try {
+    if (!text.trim()) {
+      return conn.reply(m.chat, '❗ Por favor, ingresa el nombre o enlace de la música a descargar.', m);
+    }
 
-let videoIdToFind = text.match(youtubeRegexID) || null;  
-let ytplay2 = await yts(videoIdToFind === null ? text : 'https://youtu.be/' + videoIdToFind[1]);  
+    let videoIdMatch = text.match(youtubeRegexID);
+    let ytResult = await yts(videoIdMatch ? `https://youtu.be/${videoIdMatch[1]}` : text);
 
-if (videoIdToFind) {  
-  const videoId = videoIdToFind[1];  
-  ytplay2 = ytplay2.all.find(item => item.videoId === videoId) || ytplay2.videos.find(item => item.videoId === videoId);  
-}  
-ytplay2 = ytplay2.all?.[0] || ytplay2.videos?.[0] || ytplay2;  
+    let videoInfo;
+    if (videoIdMatch) {
+      const videoId = videoIdMatch[1];
+      videoInfo = ytResult.all.find(item => item.videoId === videoId) || ytResult.videos.find(item => item.videoId === videoId);
+    } else {
+      videoInfo = ytResult.videos[0];
+    }
 
-if (!ytplay2 || ytplay2.length == 0) {  
-  return m.reply('✧ No se encontraron resultados para tu búsqueda.');  
-}  
+    if (!videoInfo) {
+      return m.reply('✧ No se encontraron resultados para tu búsqueda.');
+    }
 
-let { title, thumbnail, timestamp, views, ago, url, author } = ytplay2;  
-title = title || 'no encontrado';  
-thumbnail = thumbnail || 'no encontrado';  
-timestamp = timestamp || 'no encontrado';  
-views = views || 'no encontrado';  
-ago = ago || 'no encontrado';  
-url = url || 'no encontrado';  
-author = author || 'no encontrado';  
+    let { title, thumbnail, timestamp, views, ago, url, author } = videoInfo;
 
-const vistas = formatViews(views);  
-const canal = author.name ? author.name : 'Desconocido';  
+    const vistas = formatViews(views);
+    const canal = author?.name || 'Desconocido';
 
-const infoMessage = `*╭┈┈⊰ 𝖸𝗈𝗎𝖳𝗎𝖻𝖾 ▶️ ⊱┈┈╮*
+    const infoMessage = `*╭┈┈⊰ 𝖸𝗈𝗎𝖳𝗎𝖻𝖾 ▶️ ⊱┈┈╮*
 
-┃ 🌸 Título: ${title}
-┃ 🌼 Canal: ${canal}
-┃ ✨ Vistas: ${vistas}
-┃ ⏰ Duración: ${timestamp || 'Desconocido'}
-┃ 🧁 Publicado: ${ago || 'Desconocido'}
-┃ 🔗 Enlace: ${url}
-╰┈┈┈♡ ⚘ 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖶𝗂𝗋𝗄 ♡`;
+┃ 🌸 *Título:* ${title}
+┃ 🌼 *Canal:* ${canal}
+┃ ✨ *Vistas:* ${vistas}
+┃ ⏰ *Duración:* ${timestamp || 'Desconocido'}
+┃ 🧁 *Publicado:* ${ago || 'Desconocido'}
+┃ 🔗 *Enlace:* ${url}
+╰┈┈┈♡ ⚘ Powered By Wirk ♡`;
 
-const thumb = (await conn.getFile(thumbnail))?.data;  
+    const thumb = (await conn.getFile(thumbnail)).data;
 
-const JT = {  
-  contextInfo: {  
-    externalAdReply: {  
-      title: botname,  
-      body: dev,  
-      mediaType: 1,  
-      previewType: 0,  
-      mediaUrl: url,  
-      sourceUrl: "https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd",  
-      thumbnail: thumb,  
-      renderLargerThumbnail: true,  
-    },  
-  },  
-};  
+    const JT = {
+      contextInfo: {
+        externalAdReply: {
+          title: global.botname || "Bot",
+          body: global.dev || "Desarrollado por Wirk",
+          mediaType: 1,
+          previewType: 0,
+          mediaUrl: url,
+          sourceUrl: "https://chat.whatsapp.com/GHhOeix2sTY32wIO85pNgd",
+          thumbnail: thumb,
+          renderLargerThumbnail: true,
+        },
+      },
+    };
 
-await conn.reply(m.chat, infoMessage, m, JT);  
+    await conn.reply(m.chat, infoMessage, m, JT);
 
-if (command === 'play' || command === 'mp3' || command === 'ytmp3' || command === 'playaudio') {  
-  try {  
-    const api = await (await fetch(`https://api.vreden.my.id/api/ytmp3?url=${url}`)).json();  
-    const resulta = api.result;  
-    const result = resulta.download.url;  
+    if (['play', 'mp3', 'ytmp3', 'playaudio'].includes(command)) {
+      try {
+        const api = await (await fetch(`https://api.vreden.my.id/api/ytmp3?url=${url}`)).json();
+        const audioUrl = api?.result?.download?.url;
+        const audioTitle = api?.result?.title;
 
-    if (!result) throw new Error('⚠ El enlace de audio no se generó correctamente.');  
+        if (!audioUrl) throw new Error('Enlace de audio no generado.');
 
-    await conn.sendMessage(m.chat, {  
-      audio: { url: result },  
-      fileName: `${api.result.title}.mp3`,  
-      mimetype: 'audio/mpeg',  
-      ptt: true  
-    }, { quoted: m });  
-  } catch (e) {  
-    return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL o de la API. Por favor, intenta nuevamente más tarde.', m);  
-  }  
-} else if (command === 'play2' || command === 'ytv' || command === 'ytmp4' || command === 'mp4') {  
-  try {  
-    const response = await fetch(`https://api.neoxr.eu/api/youtube?url=${url}&type=video&quality=480p&apikey=GataDios`);  
-    const json = await response.json();  
-    await conn.sendFile(m.chat, json.data.url, `${json.title}.mp4`, title, m);  
-  } catch (e) {  
-    return conn.reply(m.chat, '⚠️ No fue posible enviar el video. Es posible que el archivo exceda el tamaño permitido o que haya ocurrido un error al generar el enlace de descarga. Te recomendamos intentarlo nuevamente más tarde.', m);  
-  }  
-} else {  
-  return conn.reply(m.chat, '✧︎ Comando no reconocido.', m);  
-}
+        await conn.sendMessage(m.chat, {
+          audio: { url: audioUrl },
+          fileName: `${audioTitle}.mp3`,
+          mimetype: 'audio/mpeg',
+          ptt: true
+        }, { quoted: m });
+      } catch (e) {
+        return conn.reply(m.chat, '⚠ No se pudo enviar el audio. Puede que sea muy pesado o la API falló.', m);
+      }
+    } else if (['play2', 'ytv', 'ytmp4', 'mp4'].includes(command)) {
+      try {
+        const response = await fetch(`https://api.neoxr.eu/api/youtube?url=${url}&type=video&quality=480p&apikey=GataDios`);
+        const json = await response.json();
 
-} catch (error) {
-return m.reply(⚠︎ Ocurrió un error: ${error});
-}
+        await conn.sendFile(m.chat, json.data.url, `${json.title}.mp4`, title, m);
+      } catch (e) {
+        return conn.reply(m.chat, '⚠️ No fue posible enviar el video. Puede que sea muy pesado o la API falló.', m);
+      }
+    } else {
+      return conn.reply(m.chat, '✧︎ Comando no reconocido.', m);
+    }
+
+  } catch (error) {
+    return m.reply(`⚠︎ Ocurrió un error: ${error.message}`);
+  }
 };
 
-handler.command = handler.help = ['play', 'mp3', 'ytmp3', 'playaudio', 'ytmp4'];
+handler.command = handler.help = ['play', 'mp3', 'ytmp3', 'playaudio', 'ytv', 'ytmp4', 'mp4'];
 handler.tags = ['descargas'];
 handler.group = false;
 
 export default handler;
 
 function formatViews(views) {
-if (views === undefined) {
-return "No disponible";
+  if (views === undefined) return "No disponible";
+  if (views >= 1_000_000_000) return `${(views / 1_000_000_000).toFixed(1)}B (${views.toLocaleString()})`;
+  if (views >= 1_000_000) return `${(views / 1_000_000).toFixed(1)}M (${views.toLocaleString()})`;
+  if (views >= 1_000) return `${(views / 1_000).toFixed(1)}k (${views.toLocaleString()})`;
+  return views.toString();
 }
-
-if (views >= 1_000_000_000) {
-return ${(views / 1_000_000_000).toFixed(1)}B (${views.toLocaleString()});
-} else if (views >= 1_000_000) {
-return ${(views / 1_000_000).toFixed(1)}M (${views.toLocaleString()});
-} else if (views >= 1_000) {
-return ${(views / 1_000).toFixed(1)}k (${views.toLocaleString()});
-}
-return views.toString();
-}
-
