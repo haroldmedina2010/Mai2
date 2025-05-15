@@ -35,7 +35,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
   if (chat.welcome && m.messageStubType == 27) {
     let bienvenida = `
-╭─❀ *˗ˏˋ 𝒀𝒂𝒚~ 𝑵𝒖𝒆𝒗𝒐 𝑴𝒊𝒆𝒎𝒃𝒓𝒐!! ˎˊ˗* ❀─╮
+╭─❀* 𝑵𝒖𝒆𝒗𝒐 𝑴𝒊𝒆𝒎𝒃𝒓𝒐!! ˎˊ* ❀─╮
 🌷 ¡Hola @${m.messageStubParameters[0].split`@`[0]}~!
 🫧 Bienvenid@ a *${groupMetadata.subject}*~
 ${welcomeText}
@@ -43,21 +43,21 @@ ${welcomeText}
 ♧ Ahora somos *${groupSize}* personitas kawaii~
 ✧ Usa *#help* para descubrir lo que puedo hacer!
 ✧ Puedes editar este mensaje con *.setwelcome*
-╰─────────────────────────────╯`.trim();
+╰────────────────────────╯`.trim();
 
     await conn.sendMini(m.chat, '🌸 𝑾𝒆𝒍𝒄𝒐𝒎𝒆 ~ 𝑵𝒚𝒂!! 🌸', dev, bienvenida, img, img, redes, fkontak);
   }
 
   if (chat.welcome && (m.messageStubType == 28 || m.messageStubType == 32)) {
     let despedida = `
-╭─❀ *˗ˏˋ 𝑯𝒂𝒔𝒕𝒂 𝒑𝒓𝒐𝒏𝒕𝒐~ ˎˊ˗* ❀─╮
+╭─❀ *˗ 𝑯𝒂𝒔𝒕𝒂 𝒑𝒓𝒐𝒏𝒕𝒐~ ˎ* ❀─╮
 🌙 @${m.messageStubParameters[0].split`@`[0]} se ha ido de *${groupMetadata.subject}*...
 ${byeText}
 
 ♧ Ahora quedamos *${groupSize}* personitas.
 ✧ Usa *#help* si necesitas mi ayuda.
 ✧ Puedes editar este mensaje con *.setbye*
-╰─────────────────────────────╯`.trim();
+╰───────────────────────╯`.trim();
 
     await conn.sendMini(m.chat, '🌙 𝑺𝒂𝒚𝒐𝒏𝒂𝒓𝒂 ~ 𝑵𝒚𝒂... 🌙', dev, despedida, img, img, redes, fkontak);
   }
