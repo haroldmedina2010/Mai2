@@ -43,7 +43,7 @@ ${welcomeText}
 ♧ Ahora somos *${groupSize}* personitas kawaii~
 ✧ Usa *#help* para descubrir lo que puedo hacer!
 ✧ Puedes editar este mensaje con *.setwelcome*
-╰──────────────────────╯`.trim();
+╰─────────────────────╯`.trim();
 
     await conn.sendMini(m.chat, '🌸 𝑾𝒆𝒍𝒄𝒐𝒎𝒆 ~ 𝑵𝒚𝒂!! 🌸', dev, bienvenida, img, img, redes, fkontak);
   }
@@ -57,7 +57,7 @@ ${byeText}
 ♧ Ahora quedamos *${groupSize}* personitas.
 ✧ Usa *#help* si necesitas mi ayuda.
 ✧ Puedes editar este mensaje con *.setbye*
-╰─────────────────────╯`.trim();
+╰────────────────────╯`.trim();
 
     await conn.sendMini(m.chat, '🌙 𝑺𝒂𝒚𝒐𝒏𝒂𝒓𝒂 ~ 𝑵𝒚𝒂... 🌙', dev, despedida, img, img, redes, fkontak);
   }
