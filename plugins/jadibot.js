@@ -65,14 +65,14 @@ let handler = async (m, { conn, command, usedPrefix, args, text, isOwner }) => {
       }
 
       const message = users.map((v, index) => `
-╭┈┈୨୧┈┈┈┈┈┈┈♡┈┈┈┈┈୨୧┈╮
+╭┈┈୨୧┈┈┈┈┈♡┈┈┈┈┈୨୧┈╮
 🌸 *Sub-Bot #${index + 1}* 🌸
 
 ✧ 📎 *Link:* wa.me/${v.user.jid.replace(/[^0-9]/g, '')}?text=${usedPrefix}estado
 ✧ 🧑‍💻 *Usuario:* ${v.user.name || 'Sub-Bot'}
 ✧ ⏱️ *Conexión:* ${v.uptime ? convertirMsADiasHorasMinutosSegundos(Date.now() - v.uptime) : 'Desconocido... nya~ 💀'}
 
-╰┈┈┈┈♡┈┈┈┈┈┈┈୨୧┈┈┈┈┈┈╯
+╰┈┈┈♡┈┈┈┈┈┈୨୧┈┈┈┈┈┈╯
 `).join('\n');
 
       const replyMessage = message.length === 0
