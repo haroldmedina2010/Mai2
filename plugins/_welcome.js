@@ -40,7 +40,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 🫧 Bienvenid@ a *${groupMetadata.subject}*~
 ${welcomeText}
 
-♧ Ahora somos *${groupSize}* personitas kawaii~
+♧ Ahora somos *${groupSize}* personitas.
 ✧ Usa *#help* para descubrir lo que puedo hacer!
 ✧ Puedes editar este mensaje con *.setwelcome*
 ╰────────────────────╯`.trim();
