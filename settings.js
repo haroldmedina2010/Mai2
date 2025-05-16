@@ -12,45 +12,45 @@ import moment from 'moment-timezone'
 global.botNumber = ''
 
 global.owner = [
-  ['50493732693', '♡ Wirk ♡', true],
-  ['573133374132', 'Maycol', true]
+  ['573171514640', '𓆩‌۫᷼ ִֶָღܾ݉͢𝐇ꪖR͟ꪮ𝑙ᦔ𓆪‌', true],
+  ['573171514640' '𓆩‌۫᷼ ִֶָღܾ݉͢𝐇ꪖR͟ꪮ𝑙ᦔ𓆪‌', true]
 ]
 
 global.mods = []
-global.suittag = ['50493732693']
+global.suittag = ['573171514640']
 global.prems = []
 
 global.libreria = 'Baileys'
 global.baileys = 'V 6.7.16'
 global.languaje = 'Español'
-global.vs = '2.2.0'
-global.nameqr = 'MaiBot-MD'
-global.namebot = '✿◟Mᴀɪ - Bᴏᴛ◞✿'
+global.vs = '1.1.0'
+global.nameqr = '👹😈Harold bot oficial 🤖🖤'
+global.namebot = '👹😈Harold bot oficial 🤖🖤'
 global.sessions = 'Sessions'
 global.jadi = 'JadiBots'
 global.yukiJadibts = true
 
-global.packname = '🌸 Mᴀɪ • Bᴏᴛ 🌸'
-global.botname = '🌷 Mᴀɪ 🌷'
-global.wm = '💫 ᴘʀᴏᴄᴇssᴇᴅ ʙʏ ᴍᴀɪ-ʙᴏᴛ ʙʏ ᴡɪʀᴋ 💫'
-global.author = '🍡 By Wirk 🍡'
+global.packname = '👹😈Harold bot oficial 🤖🖤 '
+global.botname = '👹😈Harold bot oficial 🤖🖤'
+global.wm = '💫 ᴘʀᴏᴄᴇssᴇᴅ  👹😈Harold bot oficial 🤖🖤 💫'
+global.author = '🖤By 𓆩‌۫᷼ ִֶָღܾ݉͢𝐇ꪖR͟ꪮ𝑙ᦔ𓆪‌👹'
 global.dev = '🌼 Wirk Dev 🌼'
-global.textbot = '💖 Mᴀɪ-Bᴏᴛ • Powered By Wirk 💖'
-global.etiqueta = '🌸 @Wirk 🌸'
+global.textbot = '👹😈Harold bot oficial 🤖🖤 • 𝖯𝗈𝖽𝖾𝗋𝖾𝗌 𓆩‌۫᷼ ִֶָღܾ݉͢𝐇ꪖR͟ꪮ𝑙ᦔ𓆪'‌    
+global.etiqueta = '😈 @Harold 😈'
 
-global.moneda = 'MimiCoins🫦'
-global.welcom1 = '⌗ Usa *setwelcome* para editar este mensaje'
-global.welcom2 = '⌗ Usa *setbye* para editar este mensaje'
-global.banner = 'https://files.catbox.moe/36xbc8.jpg'
-global.avatar = 'https://qu.ax/oBByS.jpg'
+global.moneda = 'Money💸'
+global.welcom1 = '⌗BIENVENIDO (A)'
+global.welcom2 = '⌗ BIENVENIDA (O)'
+global.banner = 'https://files.catbox.moe/6r4w92.jpg'
+global.avatar = 'https://files.catbox.moe/j8oy7u.jpg
 
-global.gp1 = 'https://chat.whatsapp.com/GBcSWbfm3JO1HhmbdbnrsH'
-global.comunidad1 = 'https://chat.whatsapp.com/KqkJwla1aq1LgaPiuFFtEY'
-global.channel = 'https://whatsapp.com/channel/0029Vb5UfTC4CrfeKSamhp1f'
+global.gp1 = 'https://chat.whatsapp.com/IpKoOk7j2ja2y9xgyPk7F2'  
+global.comunidad1 = '
+global.channel = 'https://whatsapp.com/channel/0029Vb9ulag2f3EERNCFMz40'
 global.channel2 = global.channel
-global.md = 'https://github.com/The-King-Destroy/Yuki_Suou-Bot'
-global.correo = 'spjxd@gmail.com'
-global.cn = global.channel
+global.md = 'https://github.com/The Harold bot oficial' 
+global.correo = 'haroldmediana2010@gmail.com'
+global.cn = 
 
 global.catalogo = fs.readFileSync('./src/catalogo.jpg')
 global.estilo = {
@@ -65,17 +65,17 @@ global.estilo = {
       status: 1,
       surface: 1,
       message: global.packname,
-      orderTitle: 'MaiBot',
+      orderTitle: '👹😈Harold bot oficial 🤖🖤',
       thumbnail: global.catalogo,
       sellerJid: '0@s.whatsapp.net'
     }
   }
 }
 global.ch = {
-  ch1: '120363402846939411@newsletter'
+  ch1: 'https://whatsapp.com/channel/0029Vb9ulag2f3EERNCFMz40'
 }
 
-global.cheerio = cheerio
+global.cheerio = cheerioy
 global.fs = fs
 global.fetch = fetch
 global.axios = axios
