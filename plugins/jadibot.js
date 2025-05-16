@@ -68,34 +68,36 @@ resultado += segundos + " segundos";
 return resultado;
 }
 const message = users.map((v, index) => `
-┏━━━━━✦୨୧✦━━━━━┓
-┃ ✨ *Sub-Bot #${index + 1}* ✨
-┃ 
-┃ 📎 *Link:* wa.me/${v.user.jid.replace(/[^0-9]/g, '')}?text=${usedPrefix}estado
-┃ 👤 *Usuario:* ${v.user.name || 'Sub-Bot'}
-┃ 🕒 *Conexión:* ${v.uptime ? convertirMsADiasHorasMinutosSegundos(Date.now() - v.uptime) : 'Tiempo Desconocido 💀'}
-┗━━━━━✦୨୧✦━━━━━┛
+const message = users.map((v, index) => `
+╭┈┈୨୧┈┈┈┈┈┈┈♡┈┈┈┈┈୨୧┈╮
+🌸 *Sub-Bot #${index + 1}* 🌸
+
+✧ 📎 *Link:* wa.me/${v.user.jid.replace(/[^0-9]/g, '')}?text=${usedPrefix}estado
+✧ 🧑‍💻 *Usuario:* ${v.user.name || 'Sub-Bot'}
+✧ ⏱️ *Conexión:* ${v.uptime ? convertirMsADiasHorasMinutosSegundos(Date.now() - v.uptime) : 'Desconocido... nya~ 💀'}
+
+╰┈┈┈┈♡┈┈┈┈┈┈┈୨୧┈┈┈┈┈┈╯
 `).join('\n');
 
 const replyMessage = message.length === 0 
-  ? `🚫 *Actualmente no hay Sub-Bots disponibles.*\n⏳ *Por favor, vuelva a intentarlo más tarde.*`
+  ? `✖️ *No hay Sub-Bots disponibles por ahora...*\n⌛ *Intenta nuevamente en un ratito, okay?*`
   : message;
 
 const totalUsers = users.length;
 
 const responseMessage = `
-╭❍🌸 *SUBS ACTIVOS* 🌸❍╮
+╭─꒰ঌ🌷 *SUB-BOTS ACTIVOS* 🌷໒꒱─╮
 
-${emoji2} \`\`\`
-Cada Sub-Bot utiliza sus funciones de manera independiente.
-El número principal no se hace responsable del mal uso.
+\`\`\`
+Cada Sub-Bot funciona de forma independiente.
+El número principal no se responsabiliza por mal uso.
 \`\`\`
 
-🧸 *Total de Sub-Bots Conectados:* ${totalUsers || '0'}
+🌟 *Total conectados:* ${totalUsers || '0'}
 
 ${replyMessage}
 
-╰❍🌺 *Comunidad Ofc* 🌺❍╯
+╰─꒰ঌ🌺 *Comunidad Oficial* 🌺໒꒱─╯
 🔗 https://chat.whatsapp.com/KqkJwla1aq1LgaPiuFFtEY
 `.trim();
 
