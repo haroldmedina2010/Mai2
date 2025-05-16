@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text }) => {
-  if (!text) throw '[ ❌ ] Ingrese el nombre de una película a buscar!'
+  if (!text) throw ' Ingrese el nombre de una película a buscar!'
   try {
     let res = await fetch(`https://nightapi-2a6l.onrender.com/api/movies/search?query=${encodeURIComponent(text)}`)
     let json = await res.json()
