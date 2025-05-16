@@ -67,7 +67,6 @@ let handler = async (m, { conn, command, usedPrefix, args, text, isOwner }) => {
       const message = users.map((v, index) => `
 ╭┈┈୨୧┈┈┈┈┈♡┈┈┈┈┈୨୧┈╮
 🌸 *Sub-Bot #${index + 1}* 🌸
-
 ✧ 📎 *Link:* wa.me/${v.user.jid.replace(/[^0-9]/g, '')}?text=${usedPrefix}estado
 ✧ 🧑‍💻 *Usuario:* ${v.user.name || 'Sub-Bot'}
 ✧ ⏱️ *Conexión:* ${v.uptime ? convertirMsADiasHorasMinutosSegundos(Date.now() - v.uptime) : 'Desconocido... nya~ 💀'}
@@ -82,7 +81,7 @@ let handler = async (m, { conn, command, usedPrefix, args, text, isOwner }) => {
       const totalUsers = users.length;
 
       const responseMessage = `
-╭─꒰ঌ🌷 *SUB-BOTS ACTIVOS* 🌷໒꒱─╮
+╭─꒰ঌ *SUB-BOTS* ໒꒱─╮
 
 \`\`\`
 Cada Sub-Bot funciona de forma independiente.
@@ -93,7 +92,7 @@ El número principal no se responsabiliza por mal uso.
 
 ${replyMessage}
 
-╰─꒰ঌ🌺 *Comunidad Oficial* 🌺໒꒱─╯
+╰─꒰ঌ🌺 *Comunidad Ofc* 🌺໒꒱─╯
 🔗 https://chat.whatsapp.com/KqkJwla1aq1LgaPiuFFtEY
 `.trim();
 
